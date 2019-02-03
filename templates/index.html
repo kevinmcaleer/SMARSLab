@@ -7,7 +7,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col col-md-6 bg-info">
+      <div class="col col-md-6 bg-light pt-3">
         <div class="row">
           <div class="container">
             <h2>Controls</h2>
@@ -59,19 +59,18 @@
 
         </div>
       </div>
-      <div class="col col-md-6 bg-success">
+      <div class="col col-md-6">
         <div class="container">
           <h2>Commands</h2>
-          <form class="form-horizontal bg-light">
-            <div class="form-group">
-              <label for="commands">Commands</label>
-              <textarea class="form-control" id="commands" rows="3" cols="20" wrap="soft">
-              {% for line in command_history %}
-                {{ line }}
-              {% endfor %}
-            </textarea>
+          <div class="card bg-light">
+            <div class="card-body">
+              <code>
+                {% for line in command_history %}
+                {{ line }} <br /> 
+                {% endfor %}
+              </code>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
