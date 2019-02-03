@@ -1,48 +1,91 @@
 {% extends "layout.html" %}
 
-{% block content %}
+{% block navbar %}
+{%- endblock navbar %}
+{% block content -%}
 <main class="hero-section">
-  <div class="container">
 
-    <div class="section-content">
-      <h2>Controls</h2>
-      <a href="{{ url_for('up') }}" class="btn-primary">Up</a>
-      <a href="{{ url_for('down') }}" class="btn-primary">Down</a>
-      <a href="{{ url_for('left') }}" class="btn-primary">Left</a>
-      <a href="{{ url_for('right') }}" class="btn-primary">Right</a>
-      <a href="{{ url_for('stand')}}" class="btn-primary">Stand</a>
-      <a href="{{ url_for('sit')}}" class="btn-primary">Sit</a>
-      <a href="{{ url_for('clap')}}" class="btn-primary">Clap</a>
-      <a href="{{ url_for('wiggle')}}" class="btn-primary">Wiggle</a>
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-6 bg-info">
+        <div class="row">
+          <div class="container">
+            <h2>Controls</h2>
+            <table>
+              <tr>
+                <td></td>
+                <td><a href="{{ url_for('up') }}" class="btn btn-primary">Up</a></td>
+                <td></td>
+                <td><a href="{{ url_for('stand')}}" class="btn btn-primary">Stand</a></td>
+              </tr>
+              <tr>
+                <td><a href="{{ url_for('left') }}" class="btn btn-primary">Left</a></td>
+                <td></td>
+                <td><a href="{{ url_for('right') }}" class="btn btn-primary">Right</a></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><a href="{{ url_for('down') }}" class="btn btn-primary">Down</a></td>
+                <td></td>
+                <td><a href="{{ url_for('sit')}}" class="btn btn-primary">Sit</a></td>
+              </tr>
+              <tr>
+                <td><a href="{{ url_for('clap')}}" class="btn btn-primary">Clap</a></td>
+                <td></td>
+                <td><a href="{{ url_for('wiggle')}}" class="btn btn-primary">Wiggle</a></td>
+                <td></td>
+              </tr>
+            </table>
+
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="container mb-5">
+
+            <div class="telemetry">
+              <h2>Telemetry</h2>
+              <table>
+                {% for line in telemetry %}
+                <tr>
+                  <td class="telemetry_line">{{ line }}</td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="col col-md-6 bg-success">
+        <div class="container">
+          <h2>Commands</h2>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="commands">Commands</label>
+              <textarea class="form-control" id="commands" rows="3">
+              {% for line in command_history %}
+                {{ line }}
+              {% endfor %}
+            </textarea>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
     <div class="clearfix"></div>
 
   </div>
-  <div class="container">
-    <div class="command">
-      <h2>Commands</h2>
-      <table border="0">
-        {% for line in command_history %}
-        <tr>
-          <td class="command_line">{{ line }}</td>
-        </tr>
-        {% endfor %}
-      </table>
-    </div>
-  </div>
-  <div class="container">
-    <div class="telemetry">
-      <h2>Telemetry</h2>
-      <table>
-        {% for line in telemetry %}
-        <tr>
-          <td class="telemetry_line">{{ line }}</td>
-        </tr>
-        {% endfor %}
-      </table>
-    </div>
-  </div>
+
 </main>
 
-{% endblock %}
+
+{%- endblock content %}
+
+{% block scripts %}
+<script src="{{bootstrap_find_resource('jquery.js', cdn='jquery')}}"></script>
+<script src="{{bootstrap_find_resource('js/bootstrap.js', cdn='bootstrap')}}"></script>
+{%- endblock scripts %}

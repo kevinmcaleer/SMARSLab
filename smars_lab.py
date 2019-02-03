@@ -5,6 +5,7 @@ Copyright 2019 Kevin McAleer
 """
 
 from flask import Flask, render_template, request, session, redirect, url_for
+from flask_bootstrap import Bootstrap
 from models import DB, User
 from forms import SignupForm, LoginForm
 from SMARS_Library3 import SmarsRobot
@@ -99,7 +100,10 @@ def wiggle():
 def main():
     """ main event loop """
     APP.secret_key = 'development-key'
-    APP.run(debug=True, host= '0.0.0.0')
+    APP.host = '0.0.0.0'
+    APP.debug = True
+    Bootstrap(APP)
+    APP.run()
 
 if __name__ == "__main__":
     main()

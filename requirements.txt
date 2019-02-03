@@ -6,7 +6,7 @@ chardet==3.0.4
 Click==7.0
 dominate==2.3.5
 Flask==1.0.2
-Flask-Bootstrap==3.3.7.1
+Flask-Bootstrap4==4.0.2
 Flask-SQLAlchemy==2.3.2
 Flask-WTF==0.14.2
 idna==2.8
