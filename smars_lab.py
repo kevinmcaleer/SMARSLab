@@ -104,7 +104,7 @@ def main():
     APP.host = '0.0.0.0'
     APP.debug = True
     Bootstrap(APP)
-    APP.run()
+    APP.run(host='0.0.0.0')
 
 if __name__ == "__main__":
     main()
