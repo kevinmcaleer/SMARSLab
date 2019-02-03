@@ -3,6 +3,10 @@ SMARS Lab
 Copyright 2019 Kevin McAleer
 3 February 2019
 """
+# TODO: add more telemetry - the foot position and ultrasonic distance sensor data
+# FIXME: create a blank smarslabdb.db, if this is to be usedself.
+# TODO: remove the forms.py user login stuff
+# TODO: add a smars graphic to the page, depdending on what type is selected.
 
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_bootstrap import Bootstrap
@@ -24,7 +28,9 @@ def index():
     """ render the main index template """
     global telemetry
     telemetry = SMARS.get_telemetry()
-    return render_template("index.html", command_history=COMMAND_HISTORY.history, telemetry=telemetry)
+    return render_template("index.html",
+                           command_history=COMMAND_HISTORY.history,
+                           telemetry=telemetry)
 
 @APP.route("/up")
 def up():
@@ -33,7 +39,9 @@ def up():
     SMARS.walkforward(steps=10)
     global telemetry
     telemetry = SMARS.get_telemetry()
-    return render_template("index.html", command_history=COMMAND_HISTORY.history, telemetry=telemetry)
+    return render_template("index.html",
+                           command_history=COMMAND_HISTORY.history,
+                           telemetry=telemetry)
 
 @APP.route("/down")
 def down():
@@ -42,7 +50,9 @@ def down():
     SMARS.walkbackward(steps=10)
     global telemetry
     telemetry = SMARS.get_telemetry()
-    return render_template("index.html", command_history=COMMAND_HISTORY.history, telemetry=telemetry)
+    return render_template("index.html",
+                           command_history=COMMAND_HISTORY.history,
+                           telemetry=telemetry)
 
 @APP.route("/left")
 def left():
@@ -51,7 +61,9 @@ def left():
     SMARS.turnleft()
     global telemetry
     telemetry = SMARS.get_telemetry()
-    return render_template("index.html", command_history=COMMAND_HISTORY.history, telemetry=telemetry)
+    return render_template("index.html",
+                           command_history=COMMAND_HISTORY.history,
+                           telemetry=telemetry)
 
 @APP.route("/right")
 def right():
@@ -60,7 +72,9 @@ def right():
     SMARS.turnright()
     global telemetry
     telemetry = SMARS.get_telemetry()
-    return render_template("index.html", command_history=COMMAND_HISTORY.history, telemetry=telemetry)
+    return render_template("index.html",
+                           command_history=COMMAND_HISTORY.history,
+                           telemetry=telemetry)
 
 @APP.route("/stand")
 def stand():
@@ -69,7 +83,9 @@ def stand():
     SMARS.stand()
     global telemetry
     telemetry = SMARS.get_telemetry()
-    return render_template("index.html", command_history=COMMAND_HISTORY.history, telemetry=telemetry)
+    return render_template("index.html",
+                           command_history=COMMAND_HISTORY.history,
+                           telemetry=telemetry)
 
 @APP.route("/sit")
 def sit():
@@ -78,7 +94,9 @@ def sit():
     SMARS.sit()
     global telemetry
     telemetry = SMARS.get_telemetry()
-    return render_template("index.html", command_history=COMMAND_HISTORY.history, telemetry=telemetry)
+    return render_template("index.html",
+                           command_history=COMMAND_HISTORY.history,
+                           telemetry=telemetry)
 
 @APP.route("/clap")
 def clap():
@@ -87,7 +105,9 @@ def clap():
     SMARS.clap(1)
     global telemetry
     telemetry = SMARS.get_telemetry()
-    return render_template("index.html", command_history=COMMAND_HISTORY.history, telemetry=telemetry)
+    return render_template("index.html",
+                           command_history=COMMAND_HISTORY.history,
+                           telemetry=telemetry)
 
 @APP.route("/wiggle")
 def wiggle():
@@ -96,7 +116,9 @@ def wiggle():
     SMARS.wiggle(1)
     global telemetry
     telemetry = SMARS.get_telemetry()
-    return render_template("index.html", command_history=COMMAND_HISTORY.history, telemetry=telemetry)
+    return render_template("index.html",
+                           command_history=COMMAND_HISTORY.history,
+                           telemetry=telemetry)
 
 def main():
     """ main event loop """
