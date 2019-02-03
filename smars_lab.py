@@ -120,6 +120,17 @@ def wiggle():
                            command_history=COMMAND_HISTORY.history,
                            telemetry=telemetry)
 
+@APP.route('/clear_history')
+def clear_history():
+    """ Clear the command history """
+    COMMAND_HISTORY.clear()
+    global telemetry
+    telemetry = SMARS.get_telemetry()
+    return render_template("index.html",
+                           command_history=COMMAND_HISTORY.history,
+                           telemetry=telemetry)
+
+
 def main():
     """ main event loop """
     APP.secret_key = 'development-key'

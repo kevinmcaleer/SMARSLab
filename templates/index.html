@@ -63,13 +63,14 @@
         <div class="container">
           <h2>Commands</h2>
           <div class="card bg-light">
-            <div class="card-body">
+            <div class="card card-body">
               <code>
                 {% for line in command_history %}
-                {{ line }} <br /> 
+                {{ line }}<br />
                 {% endfor %}
               </code>
             </div>
+            <div class="card cardfooter"><a href="{{ url_for('clear_history') }}" class="btn btn-secondary">Clear history</a></div>
           </div>
         </div>
       </div>
