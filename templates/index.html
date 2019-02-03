@@ -62,10 +62,10 @@
       <div class="col col-md-6 bg-success">
         <div class="container">
           <h2>Commands</h2>
-          <form class="form-horizontal">
+          <form class="form-horizontal bg-light">
             <div class="form-group">
               <label for="commands">Commands</label>
-              <textarea class="form-control" id="commands" rows="3">
+              <textarea class="form-control" id="commands" rows="3" cols="20" wrap="soft">
               {% for line in command_history %}
                 {{ line }}
               {% endfor %}
