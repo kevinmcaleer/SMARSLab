@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block content%}
+{% block content %}
     <main class="hero-section">
       <div class="container">
 
@@ -15,6 +15,16 @@
         <div class="clearfix"></div>
 
       </div>
+      <div class="command">
+        <h2>Commands</h2>
+        <table border="0">
+        {% for line in command_history %}
+            <tr>
+                <td class="command_line">{{ line }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+      </div>
     </main>
 
-{% endblock%}
+{% endblock %}
