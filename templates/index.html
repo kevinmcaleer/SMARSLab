@@ -1,30 +1,48 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <main class="hero-section">
-      <div class="container">
+<main class="hero-section">
+  <div class="container">
 
-        <div class="section-content">
-          <h2>Controls</h2>
-          <a href="{{ url_for('up') }}" class="btn-primary">Up</a>
-          <a href="{{ url_for('down') }}" class="btn-primary">Down</a>
-          <a href="{{ url_for('left') }}" class="btn-primary">Left</a>
-          <a href="{{ url_for('right') }}" class="btn-primary">Right</a>
-        </div>
+    <div class="section-content">
+      <h2>Controls</h2>
+      <a href="{{ url_for('up') }}" class="btn-primary">Up</a>
+      <a href="{{ url_for('down') }}" class="btn-primary">Down</a>
+      <a href="{{ url_for('left') }}" class="btn-primary">Left</a>
+      <a href="{{ url_for('right') }}" class="btn-primary">Right</a>
+      <a href="{{ url_for('stand')}}" class="btn-primary">Stand</a>
+      <a href="{{ url_for('sit')}}" class="btn-primary">Sit</a>
+      <a href="{{ url_for('clap')}}" class="btm-primary">Clap</a>
+      <a href="{{ url_for('wiggle')}}" class="btn-primary">Wiggle</a>
+    </div>
 
-        <div class="clearfix"></div>
+    <div class="clearfix"></div>
 
-      </div>
-      <div class="command">
-        <h2>Commands</h2>
-        <table border="0">
+  </div>
+  <div class="container">
+    <div class="command">
+      <h2>Commands</h2>
+      <table border="0">
         {% for line in command_history %}
-            <tr>
-                <td class="command_line">{{ line }}</td>
-            </tr>
+        <tr>
+          <td class="command_line">{{ line }}</td>
+        </tr>
         {% endfor %}
-        </table>
-      </div>
-    </main>
+      </table>
+    </div>
+  </div>
+  <div class="containter">
+    <div class="telemetry">
+      <h2>Telemetry</h2>
+      <table>
+        {% for line in telemetry %}
+        <tr>
+          <td class="telemetry_line">{{ line }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</main>
 
 {% endblock %}

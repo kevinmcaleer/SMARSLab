@@ -96,6 +96,7 @@ class Leg(object):
     stretchangle = 0
     currentangle = 0
     invert = False
+    leg_angle = 0
 
     def __init__(self, name, channel, leg_minangle, leg_maxangle, invert):
         # Initialises the leg object
@@ -201,7 +202,7 @@ class Leg(object):
         pulse = 0
 
         if angle >= 0 and angle <= 180:
-
+            self.leg_angle = angle
             # Check the angle is within the boundaries for this limb
             if angle >= self.leg_minangle and angle <= self.leg_maxangle:
                 mapmax = self.leg_max - self.leg_min
@@ -499,7 +500,7 @@ class SmarsRobot(object):
                     time.sleep(SLEEP_COUNT)
 
     def clap(self, clap_count):
-        # Clap front two hands (the sound of two hands clapping)
+        """  Clap front two hands (the sound of two hands clapping) """
         global LEFT_LEG_FRONT
         global LEFT_LEG_BACK
         global RIGHT_LEG_FRONT
@@ -546,6 +547,14 @@ class SmarsRobot(object):
             time.sleep(SLEEP_COUNT * 5)
         self.stand()
 
+    def get_telemetry(self):
+        """ returns a list of limbs and measurements """
+        telemetry = []
+        telemetry.append(["left_leg_front", self.legs[LEFT_LEG_FRONT].leg_angle])
+        telemetry.append(["right_leg_front", self.legs[RIGHT_LEG_FRONT].leg_angle])
+        telemetry.append(["left_leg_back", self.legs[LEFT_LEG_BACK].leg_angle])
+        telemetry.append(["right_leg_back", self.legs[RIGHT_LEG_BACK].leg_angle])
+        return telemetry
 
 class SMARSColor(object):
     """ Some standard console colors for use with terminal display output """
