@@ -10,7 +10,7 @@ class CommandHistory(object):
 
     def append(self, command):
         """ adds a command to the command history """
-        print(len(self.history))
+        # print(len(self.history))
         if len(self.history) < 10:
             self.history.append(command)
         elif len(self.history) == 10:
