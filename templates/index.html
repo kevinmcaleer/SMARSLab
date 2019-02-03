@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content%}
+    <main class="hero-section">
+      <div class="container">
+
+        <div class="section-content">
+          <h2>Controls</h2>
+          <a href="{{ url_for('up') }}" class="btn-primary">Up</a>
+          <a href="{{ url_for('down') }}" class="btn-primary">Down</a>
+          <a href="{{ url_for('left') }}" class="btn-primary">Left</a>
+          <a href="{{ url_for('right') }}" class="btn-primary">Right</a>
+        </div>
+
+        <div class="clearfix"></div>
+
+      </div>
+    </main>
+
+{% endblock%}
