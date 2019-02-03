@@ -99,7 +99,7 @@ def wiggle():
 def main():
     """ main event loop """
     APP.secret_key = 'development-key'
-    APP.run(debug=True)
+    APP.run(debug=True, host= '0.0.0.0')
 
 if __name__ == "__main__":
     main()
