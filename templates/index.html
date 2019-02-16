@@ -3,6 +3,24 @@
 {% block navbar %}
 {%- endblock navbar %}
 {% block content -%}
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+      </script>
+    <script type=text/javascript>
+      $(function() {
+        $('a#process_input').bind('click', function()) {
+          $.getJSON('/background_process' , {
+            progland: $('input[name="proglang"]').val(),
+          }, function(data) {
+            $("#result").text(data.result);
+          });
+          return false;
+          });
+      });
+</script>
+
+</head>
+
 <main class="hero-section">
 
   <div class="container">
@@ -14,7 +32,7 @@
             <table>
               <tr>
                 <td></td>
-                <td><a href="{{ url_for('up') }}" class="btn btn-primary">Up</a></td>
+                <td><a href="{{ url_for('up') }}" id="up" class="btn btn-primary">Up</a></td>
                 <td></td>
                 <td><a href="{{ url_for('stand')}}" class="btn btn-primary">Stand</a></td>
               </tr>
