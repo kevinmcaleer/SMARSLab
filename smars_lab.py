@@ -3,12 +3,13 @@ SMARS Lab
 Copyright 2019 Kevin McAleer
 3 February 2019
 """
+# TODO: Replace telemetry and history with jquery dynamic data
 # TODO: add more telemetry - the foot position and ultrasonic distance sensor data
 # FIXME: create a blank smarslabdb.db, if this is to be usedself.
 # TODO: remove the forms.py user login stuff
 # TODO: add a smars graphic to the page, depdending on what type is selected.
 
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, jsonify
 from flask_bootstrap import Bootstrap
 from models import DB, User
 from forms import SignupForm, LoginForm

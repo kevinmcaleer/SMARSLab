@@ -29,8 +29,9 @@ logging.propagate = False
 # Initialise the PCA9685 using the default address (0x40).
 try:
     PWM = Adafruit_PCA9685.PCA9685()
-except:
-    logging.error("failed to initialise the servo driver (Adafruit PCA9685)")
+except ImportError as error:
+    log_string = "failed to initialise the servo driver (Adafruit PCA9685): " + error
+    logging.error(log_string)
     # print("failed to initialise the servo driver (Adafruit PCA9685)")
     PWM = ""
 # Configure min and max servo pulse lengths
@@ -52,8 +53,9 @@ RIGHT_FOOT_BACK = 3  # channel 5
 # Set frequency to 60hz, good for servos.
 try:
     PWM.set_pwm_freq(60)
-except:
-    logging.error("failed to set the pwm frequency")
+except ValueError as error:
+    log_string = "failed to set the pwm frequency:, " + error
+    logging.error(log_string)
     # print("failed to set the pwm frequency")
 
 # Helper function to make setting a servo pulse width simpler.
