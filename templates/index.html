@@ -8,7 +8,7 @@
       </script>
     <script type=text/javascript>
       $(function() {
-        $('a#process_input').bind('click', function()) {
+        $('a#process_input').bind('click', function() {
           $.getJSON('/background_process' , {
             progland: $('input[name="proglang"]').val(),
           }, function(data) {
