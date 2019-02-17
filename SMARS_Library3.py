@@ -35,7 +35,7 @@ except ImportError as error:
     # print("failed to initialise the servo driver (Adafruit PCA9685)")
     PWM = ""
 else:
-    log_string = "failed to initialise the servo driver (Adafruit PCA9685): " + error
+    log_string = "failed to initialise the servo driver (Adafruit PCA9685): "
     logging.error(log_string)
     # print("failed to initialise the servo driver (Adafruit PCA9685)")
     PWM = ""

@@ -134,6 +134,7 @@ def clear_history():
 
 def main():
     """ main event loop """
+    print("Starting SMARSLab...")
     APP.secret_key = 'development-key'
     APP.host = '0.0.0.0'
     APP.debug = True
