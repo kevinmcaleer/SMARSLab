@@ -17,6 +17,16 @@
           return false;
           });
       });
+      $(function() {
+        $('a#home').bind('click', function() {
+          $.getJSON('/up' , {
+            proglang: $('input[name="proglang"]').val(),
+          }, function(data) {
+            $("#result").text(data.result);
+          });
+          return false;
+          });
+      });
 </script>
 
 </head>
@@ -38,7 +48,7 @@
               </tr>
               <tr>
                 <td><a href="{{ url_for('left') }}"><img src="/static/img/left_arrow.png"></a></td>
-                <td></td>
+                <td><a href="#" id="home"><img src="/static/img/middle_button.png"></a></td>
                 <td><a href="{{ url_for('right') }}"><img src="/static/img/right_arrow.png"></a></td>
                 <td></td>
               </tr>
