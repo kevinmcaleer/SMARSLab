@@ -17,6 +17,16 @@
           return false;
           });
       });
+      $(function() {
+        $('a#home').bind('click', function() {
+          $.getJSON('/up' , {
+            proglang: $('input[name="proglang"]').val(),
+          }, function(data) {
+            $("#result").text(data.result);
+          });
+          return false;
+          });
+      });
 </script>
 
 </head>
@@ -32,21 +42,21 @@
             <table>
               <tr>
                 <td></td>
-                <td><a href="{{ url_for('up') }}" id="up" id="process_input"><src img="/static/img/up_arrow.png"></a></td>
+                <td><a href="{{ url_for('up') }}" id="up"><img src="/static/img/up_arrow.png"></a></td>
                 <td></td>
-                <td><a href="{{ url_for('stand')}}" class="btn btn-primary">Stand</a></td>
+                <td><a href="{{ url_for('stand')}}"><img src="/static/img/stand_up.png"></a></td>
               </tr>
               <tr>
-                <td><a href="{{ url_for('left') }}" class="btn btn-primary">Left</a></td>
-                <td></td>
-                <td><a href="{{ url_for('right') }}" class="btn btn-primary">Right</a></td>
+                <td><a href="{{ url_for('left') }}"><img src="/static/img/left_arrow.png"></a></td>
+                <td><a href="#" id="home"><img src="/static/img/middle_button.png"></a></td>
+                <td><a href="{{ url_for('right') }}"><img src="/static/img/right_arrow.png"></a></td>
                 <td></td>
               </tr>
               <tr>
                 <td></td>
-                <td><a href="{{ url_for('down') }}" class="btn btn-primary">Down</a></td>
+                <td><a href="{{ url_for('down') }}"><img src="/static/img/down_arrow.png"></a></td>
                 <td></td>
-                <td><a href="{{ url_for('sit')}}" class="btn btn-primary">Sit</a></td>
+                <td><a href="{{ url_for('sit')}}"><img src="/static/img/sit_down.png"></a></td>
               </tr>
               <tr>
                 <td><a href="{{ url_for('clap')}}" class="btn btn-primary">Clap</a></td>
