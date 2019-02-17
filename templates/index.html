@@ -10,7 +10,7 @@
       $(function() {
         $('a#process_input').bind('click', function() {
           $.getJSON('/background_process' , {
-            progland: $('input[name="proglang"]').val(),
+            proglang: $('input[name="proglang"]').val(),
           }, function(data) {
             $("#result").text(data.result);
           });
@@ -74,6 +74,7 @@
             </div>
 
           </div>
+          <a href="#" id=process_input><button class="btn btn-default">Press me</button></a>
     <p id=result></p>
         </div>
       </div>
