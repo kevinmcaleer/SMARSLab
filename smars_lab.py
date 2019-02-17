@@ -144,6 +144,18 @@ def shutdown():
     shutdown_server()
     return 'Server shutting down...'
 
+@APP.route('/background_process')
+def background_process():
+    """ return dynamic data to JQuery """
+    try:
+        lang = request.args.get('proglang')
+        if str(lang).lower() == 'python':
+            return jsonify(result='you are wise')
+        else:
+            return jsonify(result="try again")
+    except Exception, error:
+        return(str(error))
+
 def main():
     """ main event loop """
     print("Starting SMARSLab...")
