@@ -138,7 +138,7 @@ def shutdown_server():
         raise RuntimeError('Not running with the Werkzeug Server')
     func()
 
-@APP.route('/shutdown', methods=['POST'])
+@APP.route('/shutdown')
 def shutdown():
     """ requests the web server shutsdown """
     shutdown_server()
