@@ -131,6 +131,18 @@ def clear_history():
                            command_history=COMMAND_HISTORY.history,
                            telemetry=telemetry)
 
+def shutdown_server():
+    """ shutsdown the SMARSLab web server """
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+
+@APP.route('/shutdown', methods=['POST'])
+def shutdown():
+    """ requests the web server shutsdown """
+    shutdown_server()
+    return 'Server shutting down...'
 
 def main():
     """ main event loop """
