@@ -38,7 +38,7 @@ else:
     log_string = "failed to initialise the servo driver (Adafruit PCA9685): "
     logging.error(log_string)
     # print("failed to initialise the servo driver (Adafruit PCA9685)")
-    PWM = ""
+    # PWM = ""
 # Configure min and max servo pulse lengths
 servo_min = 150  # Min pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
