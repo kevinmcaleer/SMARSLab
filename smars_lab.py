@@ -153,7 +153,7 @@ def background_process():
             return jsonify(result='you are wise')
         else:
             return jsonify(result="try again")
-    except Exception, error:
+    except Exception as error:
         return(str(error))
 
 def main():
