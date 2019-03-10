@@ -2,7 +2,6 @@
 Kevin McAleer September 2018
 Purpose: Provides library routines for the SMARS robot and quad robots
 
-
 You will need to install the following python libraries for this to work:
 
   # sudo apt-get install python-smbus
