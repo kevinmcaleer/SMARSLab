@@ -9,4 +9,5 @@ install:
   - pip install unittest2
   - pip install adafruit_pca9685
   - pip install flask
+  - pip install flask_bootstrap
 script: python smarslab_test_suite.py
