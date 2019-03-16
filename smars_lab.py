@@ -8,13 +8,13 @@ Copyright 2019 Kevin McAleer
 # FIXME: create a blank smarslabdb.db, if this is to be usedself.
 # TODO: remove the forms.py user login stuff
 # TODO: add a smars graphic to the page, depdending on what type is selected.
-# TODO: Add smars to pypy 
+# TODO: Add smars to pypy
 
 from flask import Flask, render_template, request, session, redirect, url_for, jsonify
 from flask_bootstrap import Bootstrap
 from models import DB, User
 from forms import SignupForm, LoginForm
-from SMARS_Library3 import SmarsRobot
+from SMARS_Library import SmarsRobot
 from command_history import CommandHistory
 
 APP = Flask(__name__)
