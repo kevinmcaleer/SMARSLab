@@ -4,7 +4,7 @@ python:
   - 3.4
   - 3.5
   - 3.6
-  - 2.7.10
+  - 2.7
 before_install:
   - sudo apt-get install -y python-smbus
   - sudo apt-get install -y i2c-tools
@@ -15,5 +15,6 @@ install:
   - pip install flask_bootstrap
   - pip install flask_sqlalchemy
   - pip install flask_wtf
+  - pip install pathlib
   - pip install smars_library
 script: python smarslab_test_suite.py
