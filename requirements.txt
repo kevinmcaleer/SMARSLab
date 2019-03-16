@@ -14,6 +14,7 @@ itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
 requests==2.21.0
+SMARS-Library==0.0.8
 SQLAlchemy==1.2.17
 urllib3==1.24.1
 visitor==0.1.3
