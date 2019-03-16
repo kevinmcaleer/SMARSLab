@@ -14,7 +14,7 @@ from flask import Flask, render_template, request, session, redirect, url_for, j
 from flask_bootstrap import Bootstrap
 from models import DB, User
 from forms import SignupForm, LoginForm
-from smars_library import SmarsRobot
+from SMARS_Library import SmarsRobot
 from command_history import CommandHistory
 
 APP = Flask(__name__)
