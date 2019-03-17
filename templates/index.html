@@ -34,6 +34,19 @@
 <main class="hero-section">
 
   <div class="container">
+
+    {% if DRIVER %}
+    DRIVER LOADED
+    {% else %}
+
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Warning!</strong> The PCA9685 Driver didn't load properly. {{ DRIVER }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+    {% endif %}
     <div class="row">
       <div class="col col-md-6 bg-light pt-3">
         <div class="row">

@@ -10,32 +10,31 @@
     {% endblock styles -%}
     <title>SMARS Lab</title>
   </head>
-  <body>
+  <body class="bg-light">
     <header>
-      <div class="navbar navbar-expand-lg navbar-light bglight">
+      <div class="navbar navbar-expand-lg navbar-light bg-white">
         <a class="navbar-brand" href="#"><img height="40px" src="{{ url_for('static', filename='img/SMARSLab.png')}}"  alt="SMARSFan Logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link"href="/setup">Setup</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="http://www.smarsfan.com" target="_blank">www.smarsfan.com</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link btn btn-outline-danger" href="/shutdown">Shutdown Server</a>
-              </li>
-            </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"href="/setup">Setup</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.smarsfan.com" target="_blank">www.smarsfan.com</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-danger" href="/shutdown">Shutdown Server</a>
+            </li>
+          </ul>
           </div>
       </div>
     </header>
-
 
     {% block content %}
     {% endblock %}
