@@ -157,6 +157,11 @@ def background_process():
     except Exception as error:
         return(str(error))
 
+@APP.route('/setup')
+def setup():
+    """ The setup wizard screen """
+    return render_template("setup.html")
+
 def main():
     """ main event loop """
     print("Starting SMARSLab...")
