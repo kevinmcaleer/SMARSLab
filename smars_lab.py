@@ -143,7 +143,7 @@ def shutdown_server():
 def shutdown():
     """ requests the web server shutsdown """
     shutdown_server()
-    return 'Server shutting down...'
+    return 'Server shutting down... Done.'
 
 @APP.route('/background_process')
 def background_process():

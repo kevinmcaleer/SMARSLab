@@ -6,12 +6,12 @@
     <!-- Bootstrap -->
     <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
     {% endblock styles -%}
-    <<title>SMARS Lab</title>
+    <title>SMARS Lab</title>
   </head>
   <body>
     <header>
       <div class="navbar navbar-expand-lg navbar-light bglight">
-        <a class="navbar-brand" href="#"><img class="img-fluid" height="40px" src="/static/img/SMARSFan_logo.png" alt="SMARSFan Logo"></a>
+        <a class="navbar-brand" href="#"><img class="img-fluid max-height: 100%; height: auto;" src="/static/img/SMARSFan_logo.png" alt="SMARSFan Logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
                 <a class="nav-link" href="http://www.smarsfan.com" target="_blank">www.smarsfan.com</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/shutdown">Shutdown Server</a>
+                <a class="nav-link btn btn-outline-danger" href="/shutdown">Shutdown Server</a>
               </li>
             </ul>
           </div>
