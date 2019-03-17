@@ -21,6 +21,7 @@ from command_history import CommandHistory
 APP = Flask(__name__)
 SMARS = SmarsRobot()
 DRIVER = smars_library.smars_library.DONOTUSE_PCA_DRIVER
+print(DRIVER)
 COMMAND_HISTORY = CommandHistory()
 telemetry = []
 
@@ -34,7 +35,7 @@ def index():
     telemetry = SMARS.get_telemetry()
     return render_template("index.html",
                            command_history=COMMAND_HISTORY.history,
-                           telemetry=telemetry)
+                           telemetry=telemetry, DRIVER=DRIVER)
 
 @APP.route("/up")
 def up():
