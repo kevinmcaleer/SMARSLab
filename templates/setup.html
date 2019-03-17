@@ -1,87 +1,84 @@
 {% extends "layout.html" %}
 {% block content %}
-  <main class="hero-section">
-    <div class="container">
-
-      <h1>Setup</h1>
+<main class="hero-section">
+  <div class="container">
+    <h1>Setup</h1>
     <p>Follow the instructions below to setup and configure your SMARS Robot.</p>
-
     <div class="container">
       <div class="card-deck">
-      <div class="card mb-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Step 1 - Check wiring</h5>
+            <img class="img-fluid" src="{{url_for('static', filename='img/PCA9685.png')}}" alt="an image of a PCA9685 circuit">
+            <br><br>
+            <p class="card-text">Plug in each servo to the PCA9685 driver board. The correct wiring sequence is as follows:</p>
+            <p>Press the Check button below to test each servo is responding (it will wiggle when pressed).</p>
 
+            <table class="table table-striped mb5 table-sm">
+              <tr>
+                <td>Channel 0</td>
+                <td>LEFT_LEG_FRONT</td>
+                <td><button class="btn btn-sm btn-orange">Check 0</button></td>
+              </tr>
+              <tr>
+                <td>Channel 1</td>
+                <td>LEFT_FOOT_FRONT</td>
+                <td><button class="btn btn-sm btn-orange">Check 1</button></td>
+              </tr>
+              <tr>
+                <td>Channel 2</td>
+                <td>LEFT_LEG_BACK</td>
+                <td><button class="btn btn-sm btn-orange">Check 2</button></td>
+              </tr>
+              <tr>
+                <td>Channel 3</td>
+                <td>LEFT_FOOT_BACK</td>
+                <td><button class="btn btn-sm btn-orange">Check 3</button></td>
+              </tr>
+              <tr>
+                <td>Channel 4</td>
+                <td>RIGHT_LEG_BACK</td>
+                <td><button class="btn btn-sm btn-orange">Check 4</button></td>
+              </tr>
+              <tr>
+                <td>Channel 5</td>
+                <td>RIGHT_FOOT_BACK</td>
+                <td><button class="btn btn-sm btn-orange">Check 5</button></td>
+              </tr>
+              <tr>
+                <td>Channel 6</td>
+                <td>RIGHT_LEG_FRONT</td>
+                <td><button class="btn btn-sm btn-orange">Check 6</button></td>
+              </tr>
+              <tr>
+                <td>Channel 7</td>
+                <td>RIGHT_FOOT_FRONT</td>
+                <td><button class="btn btn-sm btn-orange">Check 7</button></td>
+              </tr>
+            </table>
+            <hr>
 
-        <div class="card-body">
-          <h5 class="card-title">Step 1 - Check wiring</h5>
-<img class="img-fluid" src="{{url_for('static', filename='img/PCA9685.png')}}" alt="an image of a PCA9685 circuit">
-<br><br>
-          <p class="card-text">Plug in each servo to the PCA9685 driver board.
-        The correct wiring sequence is as follows:</p>
-<table class="table table-striped mb5 table-sm">
-  <tr><td>Channel 0</td><td>LEFT_LEG_FRONT</td></tr>
-  <tr><td>Channel 1</td><td>LEFT_FOOT_FRONT</td></tr>
-  <tr><td>Channel 2</td><td>LEFT_LEG_BACK</td></tr>
-  <tr><td>Channel 3</td><td>LEFT_FOOT_BACK</td></tr>
-  <tr><td>Channel 4</td><td>RIGHT_LEG_BACK</td></tr>
-  <tr><td>Channel 5</td><td>RIGHT_FOOT_BACK</td></tr>
-  <tr><td>Channel 6</td><td>RIGHT_LEG_FRONT</td></tr>
-  <tr><td>Channel 7</td><td>RIGHT_FOOT_FRONT</td></tr>
-</table>
-<hr>
-        <p>Press the round button below to test each servo is responding (it will wiggle when pressed).</p>
-<div class="table-responsive-sm">
-<table class="table table-sm table-bordered">
-   <thead class="thead-dark">
-  <tr>
-    <td class="text-center">0</td>
-    <td class="text-center">1</td>
-    <td class="text-center">2</td>
-    <td class="text-center">3</td>
-    <td class="text-center">4</td>
-    <td class="text-center">5</td>
-    <td class="text-center">6</td>
-    <td class="text-center">7</td>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><a href="#" id="channel0"><img class="text-center" src="{{url_for('static',filename='img/orange_button.png')}}" alt="channel 0 button"></a></td>
-    <td><img class="mx-auto" src="{{url_for('static',filename='img/orange_button.png')}}" alt="channel 1 button"></td>
-    <td><img class="mx-auto" src="{{url_for('static',filename='img/orange_button.png')}}" alt="channel 2 button"></td>
-    <td><img class="mx-auto" src="{{url_for('static',filename='img/orange_button.png')}}" alt="channel 3 button"></td>
-    <td><img class="mx-auto" src="{{url_for('static',filename='img/orange_button.png')}}" alt="channel 4 button"></td>
-    <td><img class="mx-auto" src="{{url_for('static',filename='img/orange_button.png')}}" alt="channel 5 button"></td>
-    <td><img class="mx-auto" src="{{url_for('static',filename='img/orange_button.png')}}" alt="channel 6 button"></td>
-    <td><img class="mx-auto" src="{{url_for('static',filename='img/orange_button.png')}}" alt="channel 7 button"></td>
-  </tr>
-  </tbody>
-</table>
-</div>
-
+          </div>
+          <div class="card-footer">footer</div>
         </div>
-        <div class="card-footer">footer</div>
-      </div>
-
-      <div class="card mb-3">
-        <div class="card-header">
-          <h5 class="card-title">Step 2</h5></div>
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="card-title">Step 2</h5>
+          </div>
           <div class="card-body">
             <p class="card-text">Each servo has a range of motion between 0º and
-               180º degrees. However the each robot leg only needs between 0 and
-                90 degrees of rotation.<br>
+              180º degrees. However the each robot leg only needs between 0 and
+              90 degrees of rotation.<br>
               The servos are oriented differently for each leg, so the degrees
               of rotation for each needs to be understood and set correctly in
               the code.</p>
           </div>
-          <div class="card-footer">
-footer
+          <div class="card-footer">footer
           </div>
-
+        </div>
 
       </div>
-
     </div>
-    </div>
-    </div>
-  </main>
+  </div>
+</main>
 {% endblock %}

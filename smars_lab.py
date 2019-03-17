@@ -10,7 +10,8 @@ Copyright 2019 Kevin McAleer
 # TODO: add a smars graphic to the page, depdending on what type is selected.
 # TODO: Add smars to pypy
 
-from flask import Flask, render_template, request, session, redirect, url_for, jsonify
+from flask import Flask, render_template, request, session, redirect, url_for, jsonify, flash
+from markupsafe import Markup
 from flask_bootstrap import Bootstrap
 from models import DB, User
 from forms import SignupForm, LoginForm
@@ -33,9 +34,12 @@ def index():
     """ render the main index template """
     global telemetry
     telemetry = SMARS.get_telemetry()
+    if DRIVER == True:
+        flash(Markup('Driver not loaded'), 'danger')
+        flash(Markup('another test of flash'), 'success')
     return render_template("index.html",
                            command_history=COMMAND_HISTORY.history,
-                           telemetry=telemetry, DRIVER=DRIVER)
+                           telemetry=telemetry)
 
 @APP.route("/up")
 def up():
@@ -163,8 +167,20 @@ def background_process():
 @APP.route('/setup')
 def setup():
     """ The setup wizard screen """
+    if DRIVER == True:
+        flash(Markup('Driver not loaded'), 'danger')
+        flash(Markup('another test of flash'), 'success')
     return render_template("setup.html")
 
+"""
+change up down, forward, left and right into a single endpoint with parameters
+
+"""
+
+@APP.route('/test', methods=['GET','POST'])
+def test():
+    """ Tests a limb passed to it by a channel number """
+    return render_template("setup.html")
 def main():
     """ main event loop """
     print("Starting SMARSLab...")
