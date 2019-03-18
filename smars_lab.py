@@ -13,8 +13,8 @@ Copyright 2019 Kevin McAleer
 from flask import Flask, render_template, request, session, redirect, url_for, jsonify, flash
 from markupsafe import Markup
 from flask_bootstrap import Bootstrap
-from models import DB, User
-from forms import SignupForm, LoginForm
+# from models import DB, User
+# from forms import SignupForm, LoginForm
 from smars_library.smars_library import SmarsRobot
 import smars_library.smars_library
 from command_history import CommandHistory
@@ -22,12 +22,13 @@ from command_history import CommandHistory
 APP = Flask(__name__)
 SMARS = SmarsRobot()
 DRIVER = smars_library.smars_library.DONOTUSE_PCA_DRIVER
-print(DRIVER)
+# print(DRIVER)
 COMMAND_HISTORY = CommandHistory()
 telemetry = []
 
-APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///SMARSLABDB.db'
-DB.init_app(APP)
+# TODO: what is this
+# APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///SMARSLABDB.db'
+# DB.init_app(APP)
 
 @APP.route("/")
 def index():
