@@ -37,7 +37,7 @@ def index():
     telemetry = SMARS.get_telemetry()
     if DRIVER == True:
         flash(Markup('Driver not loaded'), 'danger')
-        flash(Markup('another test of flash'), 'success')
+        # flash(Markup('another test of flash'), 'success')
     return render_template("index.html",
                            command_history=COMMAND_HISTORY.history,
                            telemetry=telemetry)
