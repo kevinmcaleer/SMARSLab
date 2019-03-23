@@ -9,6 +9,8 @@ To Install:
  `cd SMARSLab`
 * install virtualenv:
  `pip install virtualenv`
+ or
+ 'sudo apt-get install virtualenv'
 * create a new virtual python environment:
 `virtualenv -p python3 venv`
 * activate the new python environment:

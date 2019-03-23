@@ -170,7 +170,7 @@ def setup():
     """ The setup wizard screen """
     if DRIVER == True:
         flash(Markup('Driver not loaded'), 'danger')
-        flash(Markup('another test of flash'), 'success')
+
     return render_template("setup.html")
 
 """

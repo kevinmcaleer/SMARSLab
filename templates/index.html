@@ -33,81 +33,81 @@
 </head>
 
 <main class="hero-section">
-  <div class="container">
-    <div class="row">
-      <div class="col col-md-6 bg-white pt-3">
-        <div class="row">
-          <div class="container">
-            <h2>Controls</h2>
-            <table>
-              <tr>
-                <td></td>
-                <td><a href="{{ url_for('up') }}" id="up"><img src="/static/img/up_arrow.png"></a></td>
-                <td></td>
-                <td><a href="{{ url_for('stand')}}"><img src="/static/img/stand_up.png"></a></td>
-              </tr>
-              <tr>
-                <td><a href="{{ url_for('left') }}"><img src="/static/img/left_arrow.png"></a></td>
-                <td><a href="#" id="home"><img src="/static/img/middle_button.png"></a></td>
-                <td><a href="{{ url_for('right') }}"><img src="/static/img/right_arrow.png"></a></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td><a href="{{ url_for('down') }}"><img src="/static/img/down_arrow.png"></a></td>
-                <td></td>
-                <td><a href="{{ url_for('sit')}}"><img src="/static/img/sit_down.png"></a></td>
-              </tr>
-              <tr>
-                <td><a href="{{ url_for('clap')}}" class="btn btn-primary">Clap</a></td>
-                <td></td>
-                <td><a href="{{ url_for('wiggle')}}" class="btn btn-primary">Wiggle</a></td>
-                <td></td>
-              </tr>
-            </table>
-
-          </div>
-        </div>
-        <div class="row">
-
-          <div class="container mb-5">
-
-            <div class="telemetry">
-              <h2>Telemetry</h2>
-              <table>
-                {% for line in telemetry %}
-                <tr>
-                  <td class="telemetry_line">{{ line }}</td>
-                </tr>
-                {% endfor %}
-              </table>
-            </div>
-
-          </div>
-          <a href="#" id=process_input><button class="btn btn-default">Press me</button></a>
-          <p id=result></p>
+  <div class="container mt-3 mb-3">
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-body">
+        <h2>Controls</h2>
+        <table align="center">
+          <tr>
+            <td></td>
+            <td width="72px"><a href="{{ url_for('up') }}" id="up"><img src="/static/img/up_arrow.png"></a></td>
+            <td></td>
+            <td width="72px"><a href="{{ url_for('stand')}}"><img src="/static/img/stand_up.png"></a></td>
+          </tr>
+          <tr>
+            <td width="72px"><a href="{{ url_for('left') }}"><img src="/static/img/left_arrow.png"></a></td>
+            <td width="72px"><a href="#" id="home"><img src="/static/img/middle_button.png"></a></td>
+            <td width="72px"><a href="{{ url_for('right') }}"><img src="/static/img/right_arrow.png"></a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td width="72px"><a href="{{ url_for('down') }}"><img src="/static/img/down_arrow.png"></a></td>
+            <td></td>
+            <td width="72px"><a href="{{ url_for('sit')}}"><img src="/static/img/sit_down.png"></a></td>
+          </tr>
+          <tr>
+            <td width="72px"><a href="{{ url_for('clap')}}" class="btn btn-primary">Clap</a></td>
+            <td ></td>
+            <td width="72px"><a href="{{ url_for('clap')}}" class="btn btn-primary">Clap</a></td>
+            <td ><a href="{{ url_for('wiggle')}}" class="btn btn-primary">Wiggle</a></td>
+            <td></td>
+          </tr>
+        </table>
         </div>
       </div>
-      <div class="col col-md-6">
-        <div class="container">
-          <h2>Commands</h2>
-          <div class="card bg-white">
-            <div class="card card-body">
-              <code>
-                {% for line in command_history %}
-                {{ line }}<br />
-                {% endfor %}
-              </code>
-            </div>
-            <div class="card card-footer"><a href="{{ url_for('clear_history') }}" class="btn btn-secondary">Clear history</a></div>
-          </div>
+
+      <div class="card bg-white">
+        <div class="card-body">
+          <h2 class="card-title">Command History</h2>
+          <code>
+            {% for command in command_history %}
+            {{ command }} <br />
+            {% endfor %}
+          </code>
+        </div>
+        <div class="card-footer"><a href="{{ url_for('clear_history') }}" class="btn btn-secondary">Clear history</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h2>Telemetry</h2>
+          <table>
+            {% for line in telemetry %}
+            <tr>
+              <td><code>{{ line[0] }} {{ line[1]}}</code></td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col col-md-6 bg-white pt-3">
+
+        <div class="row">
+          <a href="#" id=process_input><button class="btn btn-default">Press me</button></a>
+          <p id=result></p>
         </div>
       </div>
     </div>
 
     <div class="clearfix"></div>
 
-  </div>
 </main>
 
 
