@@ -16,7 +16,7 @@ Jinja2==2.10
 MarkupSafe==1.1.1
 pathlib==1.0.1
 requests==2.21.0
-smars-library==0.1.2
+smars-library==0.1.3
 SQLAlchemy==1.3.1
 terminaltables==3.1.0
 urllib3==1.24.1
