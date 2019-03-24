@@ -63,5 +63,5 @@ $(function () {
         });
       }
     });
-  }, 50); // 100 is the no of ms to refresh the element
+  }, 500); // 100 is the no of ms to refresh the element
 });
