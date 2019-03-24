@@ -60,7 +60,7 @@ def metricsapi():
 @APP.route("/controlapi", methods=['GET','POST'])
 def controlapi():
     """ control api """
-    print("/ControlAPI hit!")
+    # print("/ControlAPI hit!")
     if request.method == 'POST':
         command = request.values.get('command')
         if command == "up":
@@ -87,18 +87,10 @@ def controlapi():
         if command == "clap":
             COMMAND_HISTORY.append("clap")
             SMARS.clap(1)
+        if command == "clear_history":
+            COMMAND_HISTORY.clear()
 
     return "Ok"
-
-@APP.route('/clear_history')
-def clear_history():
-    """ Clear the command history """
-    COMMAND_HISTORY.clear()
-    global telemetry
-    telemetry = SMARS.get_telemetry()
-    return render_template("index.html",
-                           command_history=COMMAND_HISTORY.get_last_ten(),
-                           telemetry=telemetry)
 
 def shutdown_server():
     """ shutsdown the SMARSLab web server """
