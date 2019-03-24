@@ -37,7 +37,7 @@
     <div class="card-deck">
       <div class="card">
         <div class="card-body">
-        <h2>Controls</h2>
+        <h2><img src="{{ url_for('static',filename='img/controls.svg')}}" width="32px"> Controls</h2>
         <table align="center">
           <tr>
             <td></td>
@@ -70,7 +70,7 @@
 
       <div class="card bg-white">
         <div class="card-body">
-          <h2 class="card-title">Command History</h2>
+          <h2 class="card-title"><img src="{{ url_for('static',filename='img/history.svg')}}" width="32px"> Command History</h2>
           <code>
             {% for command in command_history %}
             {{ command }} <br />
@@ -82,11 +82,11 @@
 
       <div class="card">
         <div class="card-body">
-          <h2>Telemetry</h2>
+          <h2><img src="{{ url_for('static',filename='img/telemetry.svg')}}" width="32px"> Telemetry</h2>
           <table>
             {% for line in telemetry %}
             <tr>
-              <td><code>{{ line[0] }} {{ line[1]}}</code></td>
+              <td><span class="text-muted text-monospace">{{ line[0] }}</span></td><td><code>{{ line[1]}}</code></td>
             </tr>
             {% endfor %}
           </table>
