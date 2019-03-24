@@ -42,6 +42,10 @@ def index():
                            command_history=COMMAND_HISTORY.history,
                            telemetry=telemetry)
 
+@APP.route("/about")
+def about():
+    return render_template("about.html")
+
 @APP.route("/up")
 def up():
     """ send up command """
