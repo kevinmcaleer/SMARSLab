@@ -36,6 +36,7 @@ $('.control_button').on('click', function() {
 
 $(function () {
   var $commands = $('#commandhistory');
+  var $telemetry = $('#telemetry');
   setInterval(function() {
     $.ajax({
       type: 'GET',
@@ -47,5 +48,20 @@ $(function () {
         });
       }
     });
-  }, 100); // 100 is the no of ms to refresh the element
+    $.ajax({
+      type: 'POST',
+      url: '/metricsapi',
+      data: {
+        "metric": "telemetry"
+      },
+      success: function(metrics){
+        $telemetry.empty();
+        $.each(metrics, function(i, metric) {
+          
+          // console.log(metric)
+          $telemetry.append('<li>' + metric[0] + ' ' + metric[1]+ '</li>')
+        });
+      }
+    });
+  }, 500); // 100 is the no of ms to refresh the element
 });

@@ -38,16 +38,25 @@ def index():
     if DRIVER == True:
         flash(Markup('Driver not loaded'), 'danger')
         # flash(Markup('another test of flash'), 'success')
-    return render_template("index.html",
-                           command_history=COMMAND_HISTORY.get_last_ten(),
-                           telemetry=telemetry)
+    return render_template("index.html")
 
 @APP.route("/about")
 def about():
     return render_template("about.html")
 
-# new ControlAPI
+@APP.route('/metricsapi', methods=['GET','POST'])
+def metricsapi():
+    """ metrics api """
+    # print("/metricsapi")
+    if request.method == 'POST':
+        metric = request.values.get('metric')
+        if metric == "telemetry":
 
+            return jsonify(SMARS.get_telemetry())
+    return "Ok"
+    # return SMARS.get_telemetry()
+
+# new ControlAPI
 @APP.route("/controlapi", methods=['GET','POST'])
 def controlapi():
     """ control api """
@@ -78,97 +87,8 @@ def controlapi():
         if command == "clap":
             COMMAND_HISTORY.append("clap")
             SMARS.clap(1)
-    print("Executing command: ",command)
+
     return "Ok"
-
-@APP.route("/up")
-def up():
-    """ send up command """
-    print("old up hit")
-    COMMAND_HISTORY.append("up")
-    SMARS.walkforward(steps=10)
-    global telemetry
-    telemetry = SMARS.get_telemetry()
-    return render_template("index.html",
-                           command_history=COMMAND_HISTORY.get_last_ten(),
-                           telemetry=telemetry)
-
-@APP.route("/down")
-def down():
-    """ send down command """
-    COMMAND_HISTORY.append("down")
-    SMARS.walkbackward(steps=10)
-    global telemetry
-    telemetry = SMARS.get_telemetry()
-    return render_template("index.html",
-                           command_history=COMMAND_HISTORY.get_last_ten(),
-                           telemetry=telemetry)
-
-@APP.route("/left")
-def left():
-    """ send left command """
-    COMMAND_HISTORY.append("left")
-    SMARS.turnleft()
-    global telemetry
-    telemetry = SMARS.get_telemetry()
-    return render_template("index.html",
-                           command_history=COMMAND_HISTORY.get_last_ten(),
-                           telemetry=telemetry)
-
-@APP.route("/right")
-def right():
-    """ send right command """
-    COMMAND_HISTORY.append("right")
-    SMARS.turnright()
-    global telemetry
-    telemetry = SMARS.get_telemetry()
-    return render_template("index.html",
-                           command_history=COMMAND_HISTORY.get_last_ten(),
-                           telemetry=telemetry)
-
-@APP.route("/stand")
-def stand():
-    """ send stand command """
-    COMMAND_HISTORY.append("stand")
-    SMARS.stand()
-    global telemetry
-    telemetry = SMARS.get_telemetry()
-    return render_template("index.html",
-                           command_history=COMMAND_HISTORY.get_last_ten(),
-                           telemetry=telemetry)
-
-@APP.route("/sit")
-def sit():
-    """ send sit command """
-    COMMAND_HISTORY.append("sit")
-    SMARS.sit()
-    global telemetry
-    telemetry = SMARS.get_telemetry()
-    return render_template("index.html",
-                           command_history=COMMAND_HISTORY.get_last_ten(),
-                           telemetry=telemetry)
-
-@APP.route("/clap")
-def clap():
-    """ send clap command """
-    COMMAND_HISTORY.append("clap")
-    SMARS.clap(1)
-    global telemetry
-    telemetry = SMARS.get_telemetry()
-    return render_template("index.html",
-                           command_history=COMMAND_HISTORY.get_last_ten(),
-                           telemetry=telemetry)
-
-@APP.route("/wiggle")
-def wiggle():
-    """ send wiggle command """
-    COMMAND_HISTORY.append("wiggle")
-    SMARS.wiggle(1)
-    global telemetry
-    telemetry = SMARS.get_telemetry()
-    return render_template("index.html",
-                           command_history=COMMAND_HISTORY.get_last_ten(),
-                           telemetry=telemetry)
 
 @APP.route('/clear_history')
 def clear_history():

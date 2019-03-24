@@ -46,7 +46,7 @@
         <div class="card-body">
           <h2 class="card-title"><img src="{{ url_for('static',filename='img/history.svg')}}" width="32px"> Command History</h2>
           <code>
-            <ul class="" id="commandhistory"></ul>
+            <ul id="commandhistory"></ul>
           </code>
         </div>
         <div class="card-footer"><a href="{{ url_for('clear_history') }}" class="btn btn-secondary">Clear history</a></div>
@@ -55,6 +55,10 @@
       <div class="card">
         <div class="card-body">
           <h2><img src="{{ url_for('static',filename='img/telemetry.svg')}}" width="32px"> Telemetry</h2>
+          <code>
+            <ul id="telemetry"></ul>
+          </code>
+
           <table>
             {% for line in telemetry %}
             <tr>
