@@ -89,6 +89,14 @@ def controlapi():
             SMARS.clap(1)
         if command == "clear_history":
             COMMAND_HISTORY.clear()
+        if command == "full_history":
+            return jsonify(COMMAND_HISTORY.get_history())
+        if command == "home":
+            COMMAND_HISTORY.append("home")
+            for leg in SMARS.legs:
+                leg.setdefault()
+            for foot in SMARS.feet:
+                foot.setdefault()
 
     return "Ok"
 
@@ -122,8 +130,14 @@ def get_telemetry():
     """ return the current telemetry in JSON format """
     return jsonify(telemetry)
 
-@APP.route('/commandhistory')
+@APP.route('/commandhistory', methods=['POST','GET'])
 def get_command_history():
+    if request.method == 'POST':
+        listtype = request.values.get('listtype')
+        if listtype == "top10":
+            return jsonify(COMMAND_HISTORY.get_last_ten())
+        else:
+            return jsonify(COMMAND_HISTORY.get_history())
     """ return the current command history in JSON format """
     return jsonify(COMMAND_HISTORY.get_history())
 

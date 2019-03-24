@@ -45,27 +45,19 @@
       <div class="card bg-white">
         <div class="card-body">
           <h2 class="card-title"><img src="{{ url_for('static',filename='img/history.svg')}}" width="32px"> Command History</h2>
-          <code>
-            <ul id="commandhistory"></ul>
-          </code>
+          <table id="commandhistory">
+          </table>
         </div>
-        <div class="card-footer"><a href="#" id="clear_history" class="control_button btn btn-secondary">Clear history</a></div>
+        <div class="card-footer">
+          <a href="#" id="clear_history" class="control_button btn btn-secondary">Clear history</a>
+          <a href="#" id="full_history" class="control_button btn btn-secondary">Show full history</a>
+        </div>
       </div>
 
       <div class="card">
         <div class="card-body">
           <h2><img src="{{ url_for('static',filename='img/telemetry.svg')}}" width="32px"> Telemetry</h2>
-          <code>
-            <ul id="telemetry"></ul>
-          </code>
-
-          <table>
-            {% for line in telemetry %}
-            <tr>
-              <td><span class="text-muted text-monospace">{{ line[0] }}</span></td>
-              <td><code>{{ line[1]}}</code></td>
-            </tr>
-            {% endfor %}
+          <table id="telemetry">
           </table>
         </div>
       </div>

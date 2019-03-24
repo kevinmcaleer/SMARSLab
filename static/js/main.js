@@ -3,11 +3,15 @@ $(function (){
 
   var $commands = $('#commandhistory');
   $.ajax({
-    type: 'GET',
+    type: 'POST',
     url: '/commandhistory',
+    data: {
+      'listtype' : 'top10',
+    },
     success: function(commands){
       $.each(commands, function(i, command){
-        $commands.append('<li>'+ command + '</li>')
+
+        $commands.append('<tr><td><code>'+ command + '</code></td></tr>')
       });
       console.log('success', commands);
     }
@@ -39,12 +43,15 @@ $(function () {
   var $telemetry = $('#telemetry');
   setInterval(function() {
     $.ajax({
-      type: 'GET',
+      type: 'POST',
       url: '/commandhistory',
+      data: {
+        'listtype' : 'top10',
+      },
       success: function(commands){
         $commands.empty();
         $.each(commands, function(i, command) {
-          $commands.append('<li>' + command + '</li>')
+          $commands.append('<tr><td><code>'+ command + '</code></td></tr>')
         });
       }
     });
@@ -59,7 +66,7 @@ $(function () {
         $.each(metrics, function(i, metric) {
 
           // console.log(metric)
-          $telemetry.append('<li>' + metric[0] + ' ' + metric[1]+ '</li>')
+          $telemetry.append('<tr><td><span class="text-muted text-monospace">' + metric[0] + '</span></td><td><code>' + metric[1]+ '</code></td></tr>')
         });
       }
     });
