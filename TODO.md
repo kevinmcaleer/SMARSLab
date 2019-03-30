@@ -20,3 +20,9 @@
 
 * a picture of the raspberry pi wiring
 * a picture of the range (maybe a video/GIF)
+
+## Detect Bluetooth SMARS
+* add bluetooth detection
+* send commands to Bluetooth SMARS
+* add multiple SMARS
+* control multiple SMARS

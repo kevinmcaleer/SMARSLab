@@ -10,6 +10,7 @@ Copyright 2019 Kevin McAleer
 # TODO: add a smars graphic to the page, depdending on what type is selected.
 # TODO: Add smars to pypy
 
+import bluetooth
 from flask import Flask, render_template, request, session, redirect, url_for, jsonify, flash
 from markupsafe import Markup
 from flask_bootstrap import Bootstrap
@@ -98,6 +99,26 @@ def controlapi():
             for foot in SMARS.feet:
                 foot.setdefault()
 
+    return "Ok"
+
+@APP.route('/bluetooth')
+def bluetooth():
+    """ shows the bluetooth detection page """
+    return render_template("bluetooth.html")
+
+@APP.route('/bluetoothapi', methods=['GET','POST'])
+def bluetooth_api():
+    if request.method == 'POST':
+        command = request.values.get('command')
+        if command == "up":
+            COMMAND_HISTORY.append("up")
+        if command == "down":
+            COMMAND_HISTORY.append("down")
+        if command == "detect":
+            nearby_devices = bluetooth.discover_devices(lookup_names = True, flush_cache = True, duration = 10)
+            for addr, name in nearby_devices:
+                print (" %s - %s" % (addr, name))
+            return jsonify(nearby_devices)
     return "Ok"
 
 def shutdown_server():
