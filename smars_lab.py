@@ -115,6 +115,7 @@ def bluetooth_api():
         if command == "down":
             COMMAND_HISTORY.append("down")
         if command == "detect":
+            print("Detecting devices")
             nearby_devices = bluetooth.discover_devices(lookup_names = True, flush_cache = True, duration = 10)
             for addr, name in nearby_devices:
                 print (" %s - %s" % (addr, name))
