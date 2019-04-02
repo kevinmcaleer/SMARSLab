@@ -2,3 +2,5 @@ venv
 *.pyc
 .idea
 .DS_Store
+pybluez
+__pycache__
