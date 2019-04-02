@@ -10,7 +10,7 @@ Copyright 2019 Kevin McAleer
 # TODO: add a smars graphic to the page, depdending on what type is selected.
 # TODO: Add smars to pypy
 
-import bluetooth
+# import bluetooth
 from flask import Flask, render_template, request, session, redirect, url_for, jsonify, flash
 from markupsafe import Markup
 from flask_bootstrap import Bootstrap
