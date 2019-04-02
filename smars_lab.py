@@ -37,7 +37,7 @@ def index():
     global telemetry
     telemetry = SMARS.get_telemetry()
     if DRIVER == True:
-        flash(Markup('Driver not loaded'), 'danger')
+        flash(Markup('PCA9685 Driver not loaded'), 'danger')
         # flash(Markup('another test of flash'), 'success')
     return render_template("index.html")
 

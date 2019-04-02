@@ -9,7 +9,7 @@ int ch_B_Direction = 13;
 int ch_A_speed = 10;
 int ch_B_speed = 11;
 int state = 0;
-int delaylength = 100;
+int delaylength = 1000;
 
 void setup() {
   // put your setup code here, to run once:
@@ -38,7 +38,7 @@ void forward() {
   analogWrite(ch_B_speed, 0); // stop
 
 
-  Serial.flush();
+//  Serial.flush();
 }
 
 void backward() {
@@ -55,7 +55,7 @@ void backward() {
   analogWrite(ch_A_speed, 0); // stop
   analogWrite(ch_B_speed, 0); // stop
 
-  Serial.flush();
+//  Serial.flush();
 }
 
 void left() {
@@ -72,7 +72,7 @@ void left() {
   analogWrite(ch_A_speed, 0); // stop
   analogWrite(ch_B_speed, 0); // stop
   
-  Serial.flush();
+//  Serial.flush();
 }
 
 void right() {
@@ -89,7 +89,7 @@ void right() {
   analogWrite(ch_A_speed, 0); // stop
   analogWrite(ch_B_speed, 0); // stop
   
-  Serial.flush();
+//  Serial.flush();
 }
 
 void fullstop() {
@@ -103,13 +103,14 @@ void fullstop() {
 
   delay(delaylength);
 
-  Serial.flush();
+//  Serial.flush();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   if (Serial.available() >0 ) {
     state = Serial.read();
+    Serial.println(state, DEC);
   }
   if (state == 'u') {
     Serial.println("MOTORS: UP");
