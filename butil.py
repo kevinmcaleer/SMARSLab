@@ -2,7 +2,7 @@ import serial
 import time
 
 print("Start")
-port="/dev/tty.HC-05-SPPDev"
+port="/dev/tty.HC-05-SPPDev-1"
 bluetooth=serial.Serial(port, 9600, timeout = 1)
 
 print("connected")
@@ -13,8 +13,7 @@ while nb != "q":
     # bluetooth.open()
     nb = input('WASD: ')
     if nb == "w":
-        bluetooth.write(b'u')
-        # bluetooth.write(str.encode()) # up
+        bluetooth.write(b'u') # up
     if nb == "s":
         bluetooth.write(b'd') # down
     if nb == "a":
@@ -23,7 +22,9 @@ while nb != "q":
         bluetooth.write(b'r') # right
     # print (str.encode())
     # bluetooth.flushInput()
-
+    note = bluetooth.readline()
+    print(note.decode('utf-8'))
+    print(str(chr(note)))
 # while True:
 #     bluetooth.write(str.encode('u'))
 #     print("up")

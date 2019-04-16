@@ -111,30 +111,36 @@ void loop() {
   if (Serial.available() >0 ) {
     state = Serial.read();
     Serial.println(state, DEC);
-  }
+  
   if (state == 'u') {
     Serial.println("MOTORS: UP");
     forward(); // move forward 
     state=" ";
+    Serial.flush();
   }
   else if (state == 'd') {
     Serial.println("MOTORS: DOWN");
     backward();
     state=" ";
+    Serial.flush();
   }
   else if (state == 'l') {
     Serial.println("MOTORS: LEFT");
     left();
     state = " ";
+    Serial.flush();
   }
   else if (state == 'r') {
     Serial.println("MOTORS: RIGHT");
     right();
     state = " ";
+    Serial.flush();
   }
   else if (state == "s") {  
     Serial.println("MOTORS: STOP");
     fullstop();
     state = " ";
+    Serial.flush();
+  }
   }
 }

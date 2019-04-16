@@ -31,6 +31,7 @@ telemetry = []
 # APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///SMARSLABDB.db'
 # DB.init_app(APP)
 
+
 @APP.route("/")
 def index():
     """ render the main index template """
@@ -41,11 +42,13 @@ def index():
         # flash(Markup('another test of flash'), 'success')
     return render_template("index.html")
 
+
 @APP.route("/about")
 def about():
     return render_template("about.html")
 
-@APP.route('/metricsapi', methods=['GET','POST'])
+
+@APP.route('/metricsapi', methods=['GET', 'POST'])
 def metricsapi():
     """ metrics api """
     # print("/metricsapi")
@@ -58,7 +61,7 @@ def metricsapi():
     # return SMARS.get_telemetry()
 
 # new ControlAPI
-@APP.route("/controlapi", methods=['GET','POST'])
+@APP.route("/controlapi", methods=['GET', 'POST'])
 def controlapi():
     """ control api """
     # print("/ControlAPI hit!")
@@ -101,12 +104,14 @@ def controlapi():
 
     return "Ok"
 
+
 @APP.route('/bluetooth')
 def bluetooth():
     """ shows the bluetooth detection page """
     return render_template("bluetooth.html")
 
-@APP.route('/bluetoothapi', methods=['GET','POST'])
+
+@APP.route('/bluetoothapi', methods=['GET', 'POST'])
 def bluetooth_api():
     if request.method == 'POST':
         command = request.values.get('command')
@@ -116,11 +121,13 @@ def bluetooth_api():
             COMMAND_HISTORY.append("down")
         if command == "detect":
             print("Detecting devices")
-            nearby_devices = bluetooth.discover_devices(lookup_names = True, flush_cache = True, duration = 10)
+            nearby_devices = bluetooth.discover_devices(
+                lookup_names=True, flush_cache=True, duration=10)
             for addr, name in nearby_devices:
-                print (" %s - %s" % (addr, name))
+                print(" %s - %s" % (addr, name))
             return jsonify(nearby_devices)
     return "Ok"
+
 
 def shutdown_server():
     """ shutsdown the SMARSLab web server """
@@ -129,11 +136,13 @@ def shutdown_server():
         raise RuntimeError('Not running with the Werkzeug Server')
     func()
 
+
 @APP.route('/shutdown')
 def shutdown():
     """ requests the web server shutsdown """
     shutdown_server()
     return 'Server shutting down... Done.'
+
 
 @APP.route('/background_process')
 def background_process():
@@ -147,12 +156,14 @@ def background_process():
     except Exception as error:
         return(str(error))
 
+
 @APP.route('/telemetry')
 def get_telemetry():
     """ return the current telemetry in JSON format """
     return jsonify(telemetry)
 
-@APP.route('/commandhistory', methods=['POST','GET'])
+
+@APP.route('/commandhistory', methods=['POST', 'GET'])
 def get_command_history():
     if request.method == 'POST':
         listtype = request.values.get('listtype')
@@ -163,6 +174,7 @@ def get_command_history():
     """ return the current command history in JSON format """
     return jsonify(COMMAND_HISTORY.get_history())
 
+
 @APP.route('/setup')
 def setup():
     """ The setup wizard screen """
@@ -171,15 +183,18 @@ def setup():
 
     return render_template("setup.html")
 
+
 """
 change up down, forward, left and right into a single endpoint with parameters
 
 """
 
-@APP.route('/test', methods=['GET','POST'])
+
+@APP.route('/test', methods=['GET', 'POST'])
 def test():
     """ Tests a limb passed to it by a channel number """
     return render_template("setup.html")
+
 
 def main():
     """ main event loop """
@@ -189,6 +204,7 @@ def main():
     APP.debug = True
     Bootstrap(APP)
     APP.run(host='0.0.0.0')
+
 
 if __name__ == "__main__":
     main()
