@@ -1,47 +1,55 @@
-import serial
+""" SMARS Bluetooth test utility """
 import time
+import serial
 
+CONNECTED = False
 print("Start")
-port="/dev/tty.HC-05-SPPDev-1"
-bluetooth=serial.Serial(port, 9600, timeout = 1)
+try:
+    PORT = "/dev/tty.HC-05-SPPDev-1"
+    BLUETOOTH = serial.Serial(PORT, 9600, timeout = 1)
+    print("connected")
+    CONNECTED = True
+except:
+    print("Error connecting to Bluetooth port: " + PORT)
 
-print("connected")
-delay = 0.5;
+DELAY = 0.5
 
-nb = "1"
-while nb != "q":
-    # bluetooth.open()
-    nb = input('WASD: ')
-    if nb == "w":
-        bluetooth.write(b'u') # up
-    if nb == "s":
-        bluetooth.write(b'd') # down
-    if nb == "a":
-        bluetooth.write(b'l') # left
-    if nb == "d":
-        bluetooth.write(b'r') # right
-    # print (str.encode())
-    # bluetooth.flushInput()
-    note = bluetooth.readline()
-    print(note.decode('utf-8'))
-    print(str(chr(note)))
-# while True:
-#     bluetooth.write(str.encode('u'))
-#     print("up")
-#     time.sleep(delay)
-#     bluetooth.flushInput()
-#
-#     bluetooth.write(str.encode('d'))
-#     print("down")
-#     time.sleep(delay)
-#     bluetooth.flushInput()
-#
-#     bluetooth.write(str.encode('l'))
-#     print("left")
-#     time.sleep(delay)
-#     bluetooth.flushInput()
-#
-#     bluetooth.write(str.encode('r'))
-#     print("right")
-#     time.sleep(delay)
-#     bluetooth.flushInput()
+if CONNECTED:
+    NB = "1"
+    while NB != "q":
+        # BLUETOOTH.open()
+        NB = input('WASD: ')
+        if NB == "w":
+            BLUETOOTH.write(b'u') # up
+        if NB == "s":
+            BLUETOOTH.write(b'd') # down
+        if NB == "a":
+            BLUETOOTH.write(b'l') # left
+        if NB == "d":
+            BLUETOOTH.write(b'r') # right
+        # print (str.encode())
+        # BLUETOOTH.flushInput()
+        note = BLUETOOTH.readline()
+        print(note.decode('utf-8'))
+        print(str(chr(note)))
+        time.sleep(DELAY)
+    # while True:
+    #     BLUETOOTH.write(str.encode('u'))
+    #     print("up")
+        # time.sleep(DELAY)
+    #     BLUETOOTH.flushInput()
+    #
+    #     BLUETOOTH.write(str.encode('d'))
+    #     print("down")
+        # time.sleep(DELAY)
+    #     BLUETOOTH.flushInput()
+    #
+    #     BLUETOOTH.write(str.encode('l'))
+    #     print("left")
+        # time.sleep(DELAY)
+    #     BLUETOOTH.flushInput()
+    #
+    #     BLUETOOTH.write(str.encode('r'))
+    #     print("right")
+        # time.sleep(DELAY)
+    #     BLUETOOTH.flushInput()

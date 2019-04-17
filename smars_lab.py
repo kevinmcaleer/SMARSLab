@@ -11,7 +11,7 @@ Copyright 2019 Kevin McAleer
 # TODO: Add smars to pypy
 
 # import bluetooth
-from flask import Flask, render_template, request, session, redirect, url_for, jsonify, flash
+from flask import Flask, render_template, request, jsonify, flash
 from markupsafe import Markup
 from flask_bootstrap import Bootstrap
 # from models import DB, User
@@ -45,6 +45,7 @@ def index():
 
 @APP.route("/about")
 def about():
+    """ returns the about page """
     return render_template("about.html")
 
 
@@ -113,6 +114,7 @@ def bluetooth():
 
 @APP.route('/bluetoothapi', methods=['GET', 'POST'])
 def bluetooth_api():
+    """ Bluetooth endpoint """
     if request.method == 'POST':
         command = request.values.get('command')
         if command == "up":
@@ -165,6 +167,7 @@ def get_telemetry():
 
 @APP.route('/commandhistory', methods=['POST', 'GET'])
 def get_command_history():
+    """ returns the command history """
     if request.method == 'POST':
         listtype = request.values.get('listtype')
         if listtype == "top10":
@@ -178,7 +181,7 @@ def get_command_history():
 @APP.route('/setup')
 def setup():
     """ The setup wizard screen """
-    if DRIVER == True:
+    if DRIVER is True:
         flash(Markup('Driver not loaded'), 'danger')
 
     return render_template("setup.html")
