@@ -18,6 +18,7 @@ if CONNECTED:
     NB = "1"
     while NB != "q":
         # BLUETOOTH.open()
+        NB = ""
         NB = input('WASD: ')
         if NB == "w":
             BLUETOOTH.write(b'u') # up
