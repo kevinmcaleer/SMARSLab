@@ -5,14 +5,15 @@ import serial
 CONNECTED = False
 print("Start")
 try:
-    PORT = "/dev/tty.HC-05-SPPDev-1"
+    PORT = "/dev/tty.HC-05-SPPDev"
     BLUETOOTH = serial.Serial(PORT, 9600, timeout = 1)
+    print (BLUETOOTH)
     print("connected")
     CONNECTED = True
 except:
     print("Error connecting to Bluetooth port: " + PORT)
 
-DELAY = 0.5
+DELAY = 2
 
 if CONNECTED:
     NB = "1"
@@ -31,8 +32,8 @@ if CONNECTED:
         # print (str.encode())
         # BLUETOOTH.flushInput()
         note = BLUETOOTH.readline()
-        print(note.decode('utf-8'))
-        print(str(chr(note)))
+        print(note.decode('ascii'))
+        # print(str(chr(note)))
         time.sleep(DELAY)
     # while True:
     #     BLUETOOTH.write(str.encode('u'))
