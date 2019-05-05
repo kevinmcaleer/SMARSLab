@@ -1,6 +1,7 @@
 venv
+SMARSLabVenv
 *.pyc
 .idea
 .DS_Store
-SMARSLabVenv
 pybluez
+__pycache__
