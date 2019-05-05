@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<main class="hero-section">
+  <div class="container">
+    <h1>Bluetooth</h1>
+    <p>Detect Bluetooth enabled SMARS:</p>
+    <div class="container">
+      <form method="POST" action="/bluetoothapi">
+        <input type="text">Bluetooth Adapter</input>
+      <button class="btn btn-primary bluetooth_button" id="detect">Detect Bluetooth Devices</button>
+      </form>
+    </div>
+  </div>
+  <div class="container">
+    <ul id="bluetooth_devices">
+    <!-- list of devices gets inserted here -->
+    </ul>
+  </div>
+</main>
+
+<script src="{{bootstrap_find_resource('jquery.js', cdn='jquery')}}"></script>
+<script src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+{% endblock %}

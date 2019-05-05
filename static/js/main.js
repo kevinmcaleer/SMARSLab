@@ -38,6 +38,29 @@ $('.control_button').on('click', function() {
   })
 });
 
+$('bluetooth_button').on('click', function(){
+  var pathId = $(this).attr('id');
+  var $devices = $('bluetooth_devices')
+  $.ajax({
+    type: 'POST',
+    url: '/bluetoothapi',
+    data: {
+      "command":pathId
+    },
+    success: function(devices) {
+      console.log('POSTING:' + pathId);
+      $devices.empty();
+      $.each(devices, function(i, device) {
+        $devices.append('<li>' + device + '</li>')
+      });
+
+    },
+    error: function(){
+      console.log('error occured sending' + pathId + 'command');
+    }
+  })
+});
+
 $(function () {
   var $commands = $('#commandhistory');
   var $telemetry = $('#telemetry');
