@@ -2,3 +2,5 @@ venv
 *.pyc
 .idea
 .DS_Store
+SMARSLabVenv
+pybluez
