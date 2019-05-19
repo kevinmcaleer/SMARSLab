@@ -1,6 +1,9 @@
 // SMARS Bluetooth remote control
 // Kevin McAleer
 // April 2019
+// May 2019 - added buzzer feature
+// Requires a Fundomoto sheild
+
 
 //int ch_A_Brake = 9;
 //int ch_B_Brake = 8;
@@ -10,11 +13,12 @@ int ch_A_speed = 10;
 int ch_B_speed = 11;
 char state = 0;
 int delaylength = 1000;
+int buzzerPin = 4;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600, SERIAL_8N1);
-  Serial.println("SMARSFan OS 1.0");
+  Serial.println("SMARSFan OS 1.1");
   Serial.println("---------------");
 
   // establish motor direction toggle pins
@@ -24,6 +28,12 @@ void setup() {
   // establish motor brake pins
   //  pinMode(ch_A_Brake, OUTPUT);
   //  pinMode(ch_B_Brake, OUTPUT);
+}
+
+void buzz(){
+  digitalWrite(buzzerPin, HIGH);
+  delay(delaylength / 2);
+  digitalWrite(buzzerPin, LOW);
 }
 
 void forward() {
@@ -142,7 +152,11 @@ void loop() {
       Serial.println("MOTORS: STOP");
       fullstop();
       state = 0;
-
+    else if (state == 'b') {
+      Serial.println("Buzzer: Sound")
+      buzz()
+      state = 0;
+    }
     }
   }
 }

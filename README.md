@@ -22,3 +22,12 @@ To Install:
 * Open a webbrowser at:
 either `http://localhost:5000` or `http://raspberrypi-IP-ADDRESS:5000`
 * Enjoy!
+
+# Arduino Bluetooth control
+## Version 1.1
+// May 2019 - added buzzer feature
+// Requires a Fundomoto sheild
+
+## Version 1.0
+- Basic control commands
+- known issue with commands not being received correctly
