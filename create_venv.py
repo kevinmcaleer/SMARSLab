@@ -1,13 +1,8 @@
 """
 # create_venv.py
-Checks the os and creates a new virtual environment for SMARSLab
-
+Creates a new virtual environment for SMARSLab
 """
+import subprocess
 
-import platform
-
-print("Platform: ", platform.platform())
-print("System: ", platform.system())
-print("Release: ", platform.release())
-print("Version: ", platform.version())
-print("Python Version: ", python.version())
+print("Creating Python 3 Virtual Environment")
+subprocess.call(["virtualenv", "-python3", "venv"])
