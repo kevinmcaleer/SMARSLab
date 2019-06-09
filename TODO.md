@@ -34,3 +34,5 @@
 * Control multiple SMARS
 
 ## One tab per SMARS Robot
+* New UI with trays or tabs for each connected robot
+* A default tab for the builtin robot 
