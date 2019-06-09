@@ -23,6 +23,9 @@ To Install:
 either `http://localhost:5000` or `http://raspberrypi-IP-ADDRESS:5000`
 * Enjoy!
 
+# ERRATA
+Had to remove support for Python 3.3 as Flask is not compatible with this version.
+
 # Arduino Bluetooth control
 ## Version 1.1
 // May 2019 - added buzzer feature
