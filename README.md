@@ -1,7 +1,9 @@
 # SMARSLab
+
 SMARS Lab - A simple web app for playing with SMARS Robots.
 
 To Install:
+
 * log on to your raspberry pi
 * clone the SMARS Lab github repository:
  `git clone https://www.github.com/kevinmcaleer/SMARSLab`
@@ -9,6 +11,8 @@ To Install:
  `cd SMARSLab`
 * install virtualenv:
  `pip install virtualenv`
+ or
+ 'sudo apt-get install virtualenv'
 * create a new virtual python environment:
 `virtualenv -p python3 venv`
 * activate the new python environment:
@@ -20,3 +24,19 @@ To Install:
 * Open a webbrowser at:
 either `http://localhost:5000` or `http://raspberrypi-IP-ADDRESS:5000`
 * Enjoy!
+
+## ERRATA
+
+Had to remove support for Python 3.3 as Flask is not compatible with this version.
+
+## Arduino Bluetooth control
+
+### Version 1.1
+
+// May 2019 - added buzzer feature
+// Requires a Fundomoto sheild
+
+### Version 1.0
+
+* Basic control commands
+* known issue with commands not being received correctly
