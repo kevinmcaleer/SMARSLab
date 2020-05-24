@@ -38,7 +38,3 @@
 - Send commands to Bluetooth SMARS
 - Add multiple SMARS
 - Control multiple SMARS
-
-## One tab per SMARS Robot
-
-- add a default tab and a tab for each additional robot

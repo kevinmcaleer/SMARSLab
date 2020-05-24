@@ -3,42 +3,70 @@
 {% block navbar %}
 {%- endblock navbar %}
 {% block content -%}
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+      </script>
+    <script type=text/javascript>
+      $(function() {
+        $('a#process_input').bind('click', function() {
+          $.getJSON('/background_process' , {
+            proglang: $('input[name="proglang"]').val(),
+          }, function(data) {
+            $("#result").text(data.result);
+          });
+          return false;
+          });
+      });
+      $(function() {
+        $('a#home').bind('click', function() {
+          $.getJSON('/up' , {
+            proglang: $('input[name="proglang"]').val(),
+          }, function(data) {
+            $("#result").text(data.result);
+          });
+          return false;
+          });
+      });
+</script>
 
 <head>
 </head>
 <main class="hero-section">
-  <div class="container mt-3 mb-3">
-    <div class="card-deck">
-      <div class="card">
-        <div class="card-body">
-          <h2><img src="{{ url_for('static',filename='img/controls.svg')}}" width="32px"> Controls</h2>
-          <table align="center">
-            <tr>
-              <td></td>
-              <td width="72px"><a href="#" id="up" class="control_button"><img src="/static/img/up_arrow.png"></a></td>
-              <td></td>
-              <td width="72px"><a href="#" id="stand" class="control_button"><img src="/static/img/stand_up.png"></a></td>
-            </tr>
-            <tr>
-              <td width="72px"><a href="#" id="left" class="control_button"><img src="/static/img/left_arrow.png"></a></td>
-              <td width="72px"><a href="#" id="home" class="control_button"><img src="/static/img/middle_button.png"></a></td>
-              <td width="72px"><a href="# "id="right" class="control_button"><img src="/static/img/right_arrow.png"></a></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td width="72px"><a href="#" id="down" class="control_button"><img src="/static/img/down_arrow.png"></a></td>
-              <td></td>
-              <td width="72px"><a href="#" id="sit" class="control_button""><img src="/static/img/sit_down.png"></a></td>
-            </tr>
-            <tr>
-              <td width="72px"><a href="#" id="clap" class="control_button btn btn-primary">Clap</a></td>
-              <td></td>
-              <td></td>
-              <td><a href="#" id="wiggle" class="control_button btn btn-primary">Wiggle</a></td>
-              <td></td>
-            </tr>
-          </table>
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-6 bg-light pt-3">
+        <div class="row">
+          <div class="container">
+            <h2>Controls</h2>
+            <table>
+              <tr>
+                <td></td>
+                <td><a href="{{ url_for('up') }}" id="up"><img src="/static/img/up_arrow.png"></a></td>
+                <td></td>
+                <td><a href="{{ url_for('stand')}}"><img src="/static/img/stand_up.png"></a></td>
+              </tr>
+              <tr>
+                <td><a href="{{ url_for('left') }}"><img src="/static/img/left_arrow.png"></a></td>
+                <td><a href="#" id="home"><img src="/static/img/middle_button.png"></a></td>
+                <td><a href="{{ url_for('right') }}"><img src="/static/img/right_arrow.png"></a></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><a href="{{ url_for('down') }}"><img src="/static/img/down_arrow.png"></a></td>
+                <td></td>
+                <td><a href="{{ url_for('sit')}}"><img src="/static/img/sit_down.png"></a></td>
+              </tr>
+              <tr>
+                <td><a href="{{ url_for('clap')}}" class="btn btn-primary">Clap</a></td>
+                <td></td>
+                <td><a href="{{ url_for('wiggle')}}" class="btn btn-primary">Wiggle</a></td>
+                <td></td>
+              </tr>
+            </table>
+
+          </div>
         </div>
       </div>
 
