@@ -28,6 +28,7 @@ either `http://localhost:5000` or `http://raspberrypi-IP-ADDRESS:5000`
 ## ERRATA
 
 Had to remove support for Python 3.3 as Flask is not compatible with this version.
+Removed some objc dependencies from requirements.txt as this causes the build to fail
 
 ## Arduino Bluetooth control
 
