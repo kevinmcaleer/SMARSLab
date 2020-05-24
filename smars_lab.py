@@ -50,6 +50,9 @@ def about():
     """ returns the about page """
     return render_template("about.html")
 
+@APP.route("/blockly")
+def blockly():
+    return render_template("blockly.html")
 
 @APP.route('/metricsapi', methods=['GET', 'POST'])
 def metricsapi():
