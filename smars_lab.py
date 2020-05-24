@@ -17,12 +17,14 @@ from flask_bootstrap import Bootstrap
 # from models import DB, User
 # from forms import SignupForm, LoginForm
 from smars_library.smars_library import SmarsRobot
-import smars_library.smars_library
-from smars_library.smars_library import CommandHistory
+
+import smars_library.smars_library as sl
+from command_history import CommandHistory
 
 APP = Flask(__name__)
 SMARS = SmarsRobot()
-DRIVER = smars_library.smars_library.do_no_use_PCA_driver
+DRIVER = sl.do_no_use_PCA_driver
+
 # print(DRIVER)
 COMMAND_HISTORY = CommandHistory()
 telemetry = []
