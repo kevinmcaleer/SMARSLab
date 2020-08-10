@@ -14,7 +14,7 @@ To Install:
  or
  'sudo apt-get install virtualenv'
 * create a new virtual python environment:
-`virtualenv -p python3 venv`
+`python3 -m venv venv`
 * activate the new python environment:
 `source venv/bin/activate`
 * install the pre-requisites:
