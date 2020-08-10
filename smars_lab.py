@@ -23,7 +23,7 @@ from command_history import CommandHistory
 
 APP = Flask(__name__)
 SMARS = SmarsRobot()
-DRIVER = sl.do_no_use_PCA_driver
+DRIVER = sl.DO_NOT_USE_PCA_DRIVER
 
 # print(DRIVER)
 COMMAND_HISTORY = CommandHistory()
@@ -103,10 +103,10 @@ def controlapi():
             return jsonify(COMMAND_HISTORY.get_history())
         if command == "home":
             COMMAND_HISTORY.append("home")
-            for leg in SMARS.legs:
-                leg.setdefault()
-            for foot in SMARS.feet:
-                foot.setdefault()
+            for leg in SMARS.__legs:
+                leg.default()
+            for foot in SMARS.__feet:
+                foot.default()
 
     return "Ok"
 
