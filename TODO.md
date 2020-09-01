@@ -38,3 +38,4 @@
 - Send commands to Bluetooth SMARS
 - Add multiple SMARS
 - Control multiple SMARS
+- Tidy up some files
