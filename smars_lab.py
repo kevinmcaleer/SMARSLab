@@ -16,6 +16,9 @@ from flask_bootstrap import Bootstrap
 # from models import DB, User
 # from forms import SignupForm, LoginForm
 from smars_library.smars_library import SmarsRobot
+import os
+from os import path 
+import yaml
 
 import smars_library.smars_library as sl
 from command_history import CommandHistory
@@ -31,6 +34,23 @@ telemetry = []
 # TODO: what is this
 # APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///SMARSLABDB.db'
 # DB.init_app(APP)
+
+# Configuration
+base_dir = os.getcwd()
+config = []
+config_file_name = 'smars_lab.yml'
+config_file = os.path.join(base_dir, config_file_name)
+
+def load_config():
+    """ loads the configuration from the config file - if present """
+    config = []
+    if path.exists(config_file):
+        config = yaml.load(open(config_file), Loader=yaml.SafeLoader)
+        for item in config:
+            print(f"{item.upper()}: {config[item]}")
+    else:
+        print("No smars_lab.yml configuration file found, using defaults")
+    return (config)
 
 
 @APP.route("/")
@@ -206,6 +226,7 @@ def test():
 def main():
     """ main event loop """
     print("Starting SMARSLab...")
+    config = load_config()
     APP.secret_key = 'development-key'
     APP.host = '0.0.0.0'
     APP.debug = True

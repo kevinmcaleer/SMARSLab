@@ -1,0 +1,4 @@
+# SMARSLab
+experimental:
+- bluetooth: false
+- blockly: false
