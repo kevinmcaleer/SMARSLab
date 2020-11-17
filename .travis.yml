@@ -11,6 +11,7 @@ before_install:
   - sudo apt-get install -y i2c-tools
 install:
   - pip install unittest2
+  - pip install pyyaml
   - pip install adafruit_pca9685
   - pip install flask
   - pip install flask_bootstrap
