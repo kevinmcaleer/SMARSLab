@@ -26,18 +26,22 @@
             <li class="nav-item active">
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
+            {% if config['EXPERIMENTAL',['blockly']] == True %}
             <li class="nav-item">
                 <a class="nav-link" href="/blockly">Blockly</a>
             </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link"href="/setup">Setup</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
+            {% if config['EXPERIMENTAL',['bluetooth']] == True %}
             <li class="nav-item">
               <a class="nav-link" href="/bluetooth">Bluetooth</a>
             </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="http://www.smarsfan.com" target="_blank">www.smarsfan.com</a>
             </li>

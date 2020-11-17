@@ -1,0 +1,8 @@
+# SMARSLab
+# Kevin McAleer, November 2020
+
+# set the experimental values to 'true' if you want to enable them. Please note they are experimental for a reason!
+
+experimental:
+- bluetooth: false
+- blockly: false
