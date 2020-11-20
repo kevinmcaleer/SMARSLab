@@ -25,6 +25,7 @@ from command_history import CommandHistory
 
 APP = Flask(__name__)
 SMARS = SmarsRobot()
+SMARS.feet_invert()
 DRIVER = sl.DO_NOT_USE_PCA_DRIVER
 
 # print(DRIVER)
@@ -171,7 +172,7 @@ def shutdown():
 def background_process():
     """ return dynamic data to JQuery """
     try:
-        lang = request.args.get('proglang')
+        lang = request.ar```gs.get('proglang')
         if str(lang).lower() == 'python':
             return jsonify(result='you are wise')
         else:
