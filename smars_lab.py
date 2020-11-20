@@ -25,7 +25,7 @@ from command_history import CommandHistory
 
 APP = Flask(__name__)
 SMARS = SmarsRobot()
-SMARS.feet_invert()
+SMARS.invert_feet()
 DRIVER = sl.DO_NOT_USE_PCA_DRIVER
 
 # print(DRIVER)
