@@ -172,7 +172,7 @@ def shutdown():
 def background_process():
     """ return dynamic data to JQuery """
     try:
-        lang = request.ar```gs.get('proglang')
+        lang = request.args.get('proglang')
         if str(lang).lower() == 'python':
             return jsonify(result='you are wise')
         else:
