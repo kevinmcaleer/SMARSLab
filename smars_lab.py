@@ -122,10 +122,7 @@ def controlapi():
             return jsonify(COMMAND_HISTORY.get_history())
         if command == "home":
             COMMAND_HISTORY.append("home")
-            for leg in SMARS.__legs:
-                leg.default()
-            for foot in SMARS.__feet:
-                foot.default()
+            SMARS.default()
 
     return "Ok"
 
