@@ -13,7 +13,7 @@ buff = numpy.frombuffer(stream.getvalue(), dtype=numpy.uint8)
 
 image = cv2.imdecode(buff, 1)
 
-face_cascade = cv2.CascadeClassifier('/home/pi/Documents/opencv_stuff/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('/home/pi/Documents/opencv/haarcascade_frontalface_default.xml')
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
