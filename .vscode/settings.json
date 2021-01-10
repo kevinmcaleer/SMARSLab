@@ -1,5 +1,6 @@
 {
     "python.pythonPath": "/Users/kev/Documents/Python/SMARSLab/venv/bin/python3",
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "jupyter.jupyterServerType": "local"
 }
