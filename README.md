@@ -20,7 +20,7 @@ To Install:
 * install the pre-requisites:
 `pip install -r requirements.txt`
 * load SMARSLab:
-`python smarslab.py`
+`python smars_lab.py`
 * Open a webbrowser at:
 either `http://localhost:5000` or `http://raspberrypi-IP-ADDRESS:5000`
 * Enjoy!
