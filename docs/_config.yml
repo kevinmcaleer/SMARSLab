@@ -2,8 +2,8 @@ title: SMARSLab Documentation
 email: kevinmcaleer@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   SMARSLab - a browser based user interface for SMARS robots
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://kevinmcaleer.github.io/SMARSLab/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/SMARSLab" # the subpath of your site, e.g. /blog
+url: "https://kevinmcaleer.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: kevsmac
 github_username:  kevinmcaleer
 
