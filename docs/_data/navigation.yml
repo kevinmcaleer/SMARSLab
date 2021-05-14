@@ -1,7 +1,9 @@
 - name: Home
   link: /
-- name: Installing
-  link: /install
+- name: About
+  link: /about
+- name: Download
+  link: /download
 - name: SMARSFan
   link: https://www.smarsfan.com
   
