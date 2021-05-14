@@ -1,0 +1,7 @@
+- name: Home
+  link: /
+- name: Installing
+  link: /install
+- name: SMARSFan
+  link: https://www.smarsfan.com
+  
