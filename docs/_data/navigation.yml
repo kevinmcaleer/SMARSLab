@@ -1,9 +1,9 @@
 - name: Home
-  link: /
+  link: /SMARSLab
 - name: About
-  link: /about
+  link: /SMARSLab/about
 - name: Download
-  link: /download
+  link: /SMARSLab/download
 - name: SMARSFan
   link: https://www.smarsfan.com
   
