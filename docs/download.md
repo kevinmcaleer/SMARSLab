@@ -1,11 +1,8 @@
 ---
 layout: default
 title: Installation
----
-
-# How to Install SMARSlab
-Learn how to install SMARSLab on your Mac, PC or Raspberry Pi
-
+subtitle: How to Install SMARSlab
+description: Learn how to install SMARSLab on your Mac, PC or Raspberry Pi
 ---
 
 ![SMARSLab Image](/assets/img/smarslab.png){:class="img-fluid w-25"}

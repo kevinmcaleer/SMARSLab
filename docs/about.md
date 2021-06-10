@@ -1,11 +1,9 @@
 ---
 layout: default
-title: About
+title: About SMARSLab
+subtitle: All about SMARSLab
+description: SMARS Robots are the best
 ---
 
-# About SMARSLab
-All about SMARSLab
-
----
-
-SMARS Robots are the best
+## SMARS Robots are the best
+Its true.
