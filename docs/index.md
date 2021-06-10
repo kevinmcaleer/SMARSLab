@@ -1,11 +1,8 @@
 ---
 layout: default
-
----
-
-# Welcome to SMARSLab
-The browser-based interface for SMARS robots.
-
+title: Welcome to SMARSLab
+subtitle: The browser-based interface for SMARS robots.
+description: Control your SMARS Quad Robot using a mobile device over wifi
 ---
 
 ![SMARSLab Image](/assets/img/smarslab.png){:class="img-fluid w-25"}
