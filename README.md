@@ -23,6 +23,11 @@ To Install:
 `python smarslab.py`
 * Open a webbrowser at:
 either `http://localhost:5000` or `http://raspberrypi-IP-ADDRESS:5000`
+* You will need to install the following python libraries for this to work:
+    `sudo apt-get install python-smbus`
+
+    `sudo apt-get install i2c-tools`
+* Make sure I2C is enabled in the interfaces from the Raspberry Pi Configuration.
 * Enjoy!
 
 ## ERRATA
