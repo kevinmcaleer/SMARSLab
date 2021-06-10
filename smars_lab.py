@@ -178,7 +178,9 @@ def background_process():
         else:
             return jsonify(result="try again")
     except Exception as error:
-        return(str(error))
+        
+#         return(str(error))
+        return jsonify(result="There was an error")
 
 
 @APP.route('/telemetry')
