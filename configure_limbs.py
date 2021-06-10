@@ -9,3 +9,12 @@ quad = SR()
 quad.default()
 
 
+config = quad.config
+for item in config:
+    print(item['name'], item['channel'])
+# print(config)
+
+for item in config:
+    print(item['name'], item['invert'])
+
+quad.default()
