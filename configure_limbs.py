@@ -5,16 +5,18 @@
 from smars_library.smars_library import SmarsRobot as SR
 
 quad = SR()
-
-quad.default()
-
-
 config = quad.config
-for item in config:
+
+def list_channels():
+   for item in config:
     print(item['name'], item['channel'])
-# print(config)
 
-for item in config:
-    print(item['name'], item['invert'])
+def list_invert():
+    for item in config:
+        print(item['name'], item['invert'])
 
-quad.default()
+def identify(channel):
+    """ wiggles a limb to identify it """
+    quad.identify(channel)
+
+    
