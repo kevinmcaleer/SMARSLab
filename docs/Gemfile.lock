@@ -87,6 +87,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.3-x86_64-linux)
       racc (~> 1.4)
+    nokogiri (1.11.3-x86_64-linux)
+      racc (~> 1.4)
     octicons (13.0.0)
       nokogiri (>= 1.6.3.1)
     pathutil (0.16.2)
