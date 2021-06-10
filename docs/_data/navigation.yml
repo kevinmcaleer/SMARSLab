@@ -6,4 +6,5 @@
   link: /SMARSLab/download
 - name: SMARSFan
   link: https://www.smarsfan.com
-  
+- name: Troubleshooting
+  link: /driver_not_found  
