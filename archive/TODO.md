@@ -2,8 +2,8 @@
 
 ## New Endpoints [COMPLETE]
 
-- Replace existing endpoint calls with single Post to control API
-- New endpoint for commands
+- [ ] Replace existing endpoint calls with single Post to control API
+- [ ] New endpoint for commands
 - New endpoint for getting telemetry in JSON
 - New endpoint for getting command history in JSON
 
