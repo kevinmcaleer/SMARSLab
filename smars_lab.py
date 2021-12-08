@@ -2,12 +2,11 @@
 SMARS Lab
 Copyright 2019 Kevin McAleer
 3 February 2019
+Updated 13 June 2021 
 """
-# TODO: Replace telemetry and history with jquery dynamic data
 # TODO: add more telemetry - the foot position and ultrasonic distance sensor data
 # FIXME: create a blank smarslabdb.db, if this is to be usedself.
 # TODO: add a smars graphic to the page, depdending on what type is selected.
-# TODO: Add smars to pypy
 
 # import bluetooth
 from flask import Flask, render_template, request, jsonify, flash
