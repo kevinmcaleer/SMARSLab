@@ -5,7 +5,7 @@ Adafruit-PureIO==0.2.3
 astroid==2.3.3
 autopep8==1.4.3
 btlewrap==0.0.4
-certifi==2019.3.9
+certifi==2022.12.7
 chardet==3.0.4
 Click==7.0
 colorama==0.4.4
