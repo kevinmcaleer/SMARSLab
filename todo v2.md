@@ -11,3 +11,4 @@ Tidied up code for SMARS wheeled version, powered by an ESP32, coded in MicroPyt
 - [ ] Wifi
 - [ ] Bluetooth control
 - [ ] Range finder built-in
+- [ ] Make this ASync 
