@@ -2,36 +2,32 @@
 SMARS Lab
 Copyright 2019 Kevin McAleer
 3 February 2019
-Updated 13 June 2021 
+Updated 13 June 2021
+Updated 15 March 2025
 """
 # TODO: add more telemetry - the foot position and ultrasonic distance sensor data
-# FIXME: create a blank smarslabdb.db, if this is to be usedself.
 # TODO: add a smars graphic to the page, depdending on what type is selected.
 
-# import bluetooth
-from flask import Flask, render_template, request, jsonify, flash
-from markupsafe import Markup
-from flask_bootstrap import Bootstrap
-from smars_library.smars_library import SmarsRobot
 import os
-from os import path 
-import yaml
+from os import path
 
 import smars_library.smars_library as sl
+import yaml
+# import bluetooth
+from flask import Flask, render_template, request, jsonify, flash
+from flask_bootstrap import Bootstrap
+from markupsafe import Markup
+from smars_library.smars_library import SmarsRobot
+
 from command_history import CommandHistory
 
 APP = Flask(__name__)
 SMARS = SmarsRobot()
-# SMARS.invert_feet()
 DRIVER = sl.DO_NOT_USE_PCA_DRIVER
 
 # print(DRIVER)
 COMMAND_HISTORY = CommandHistory()
 telemetry = []
-
-# TODO: what is this
-# APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///SMARSLABDB.db'
-# DB.init_app(APP)
 
 # Configuration
 base_dir = os.getcwd()
