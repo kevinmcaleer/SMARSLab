@@ -17,8 +17,6 @@ from flask import Flask, render_template, request, jsonify, flash
 from flask_bootstrap import Bootstrap
 from markupsafe import Markup
 from smars_library.smars_library import SmarsRobot
-from Adafruit-PCA9685 import PCA9685
-
 from utils.command_history import CommandHistory
 
 APP = Flask(__name__)
