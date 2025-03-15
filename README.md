@@ -37,6 +37,14 @@ Removed some objc dependencies from requirements.txt as this causes the build to
 
 ## Arduino Bluetooth control
 
+### Version 1.2
+
+__Mar 2025__
+
+- Tidied up code
+- Improved readability
+- Removed unnecessary dependencies
+
 
 ### Version 1.1
 

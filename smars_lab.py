@@ -12,8 +12,6 @@ Updated 13 June 2021
 from flask import Flask, render_template, request, jsonify, flash
 from markupsafe import Markup
 from flask_bootstrap import Bootstrap
-# from models import DB, User
-# from forms import SignupForm, LoginForm
 from smars_library.smars_library import SmarsRobot
 import os
 from os import path 
@@ -43,22 +41,21 @@ config_file = os.path.join(base_dir, config_file_name)
 
 def load_config():
     """ loads the configuration from the config file - if present """
-    config = []
+    my_config = []
     if path.exists(config_file):
-        config = yaml.load(open(config_file), Loader=yaml.SafeLoader)
-        for item in config:
-            print(f"{item.upper()}: {config[item]}")
+        my_config = yaml.load(open(config_file), Loader=yaml.SafeLoader)
+        for item in my_config:
+            print(f"{item.upper()}: {my_config[item]}")
     else:
         print("No smars_lab.yml configuration file found, using defaults")
-    return (config)
-
+    return my_config
 
 @APP.route("/")
 def index():
     """ render the main index template """
     global telemetry
     telemetry = SMARS.get_telemetry()
-    if DRIVER == True:
+    if DRIVER:
         flash(Markup('PCA9685 Driver not loaded. For more information visit: <a href="https://kevinmcaleer.github.io/SMARSLab/driver_not_found">This documentation page</a>'), 'danger')
         # flash(Markup('another test of flash'), 'success')
     return render_template("index.html")
@@ -91,40 +88,37 @@ def controlapi():
     """ control api """
     # print("/ControlAPI hit!")
     if request.method == 'POST':
+
+        # Map commands to corresponding SMARS actions dynamically
+
+        command_actions = {
+            "up": lambda: SMARS.walkforward(steps=10),
+            "down": lambda: SMARS.walkbackward(steps=10),
+            "left": lambda: SMARS.turnleft(),
+            "right": lambda: SMARS.turnright(),
+            "stand": lambda: SMARS.stand(),
+            "sit": lambda: SMARS.sit(),
+            "wiggle": lambda: SMARS.wiggle(wiggle_count=1),
+            "clap": lambda: SMARS.clap(clap_count=1),
+            "clear_history": lambda: COMMAND_HISTORY.clear(),
+            "home": lambda: SMARS.default(),
+        }
+
+        # Handle "command" and "full_history" edge case
         command = request.values.get('command')
-        if command == "up":
-            COMMAND_HISTORY.append("up")
-            SMARS.walkforward(steps=10)
-        if command == "down":
-            COMMAND_HISTORY.append("down")
-            SMARS.walkbackward(steps=10)
-        if command == "left":
-            COMMAND_HISTORY.append("left")
-            SMARS.turnleft()
-        if command == "right":
-            COMMAND_HISTORY.append("right")
-            SMARS.turnright()
-        if command == "stand":
-            COMMAND_HISTORY.append("stand")
-            SMARS.stand()
-        if command == "sit":
-            COMMAND_HISTORY.append("sit")
-            SMARS.sit()
-        if command == "wiggle":
-            COMMAND_HISTORY.append("wiggle")
-            SMARS.wiggle(1)
-        if command == "clap":
-            COMMAND_HISTORY.append("clap")
-            SMARS.clap(1)
-        if command == "clear_history":
-            COMMAND_HISTORY.clear()
         if command == "full_history":
             return jsonify(COMMAND_HISTORY.get_history())
-        if command == "home":
-            COMMAND_HISTORY.append("home")
-            SMARS.default()
 
-    return "Ok"
+        # Execute command if its valid
+        action = command_actions.get(command)
+        if action:
+            COMMAND_HISTORY.append(command)
+            return jsonify({"status":"success", "command": command})
+
+        # Handle invalid commands
+        return jsonify({"status": "error", "message": "Invalid command"}), 400
+
+    return jsonify({"status": "error", "message": "Only POST requests are supported"}), 405
 
 
 @APP.route('/bluetooth')
@@ -225,12 +219,12 @@ def test():
 def main():
     """ main event loop """
     print("Starting SMARSLab...")
-    config = load_config()
+    # config = load_config()
     APP.secret_key = 'development-key'
     APP.host = '0.0.0.0'
     APP.debug = True
     Bootstrap(APP)
-    APP.run(host='0.0.0.0')
+    APP.run(host='0.0.0.0', port=5001)
 
 
 if __name__ == "__main__":

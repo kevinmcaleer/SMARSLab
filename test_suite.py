@@ -4,9 +4,9 @@ import smars_library.smars_library as sl
 class test_smarslab(unittest.TestCase):
 
     def test_create_robot(self):
-        r = sl.SmarsRobot
-        r.name = "test"
-        self.assertTrue(r.name == "test")
+        robot = sl.SmarsRobot
+        robot.name = "test"
+        self.assertTrue(robot.name == "test")
 
 if __name__ == '__main__':
     unittest.main()
