@@ -5,6 +5,7 @@ Copyright 2019 Kevin McAleer
 Updated 13 June 2021
 Updated 15 March 2025
 """
+
 # TODO: add more telemetry - the foot position and ultrasonic distance sensor data
 
 import os
@@ -12,13 +13,12 @@ from os import path
 
 import smars_library.smars_library as sl
 import yaml
-# import bluetooth
 from flask import Flask, render_template, request, jsonify, flash
 from flask_bootstrap import Bootstrap
 from markupsafe import Markup
 from smars_library.smars_library import SmarsRobot
 
-from command_history import CommandHistory
+from utils.command_history import CommandHistory
 
 APP = Flask(__name__)
 SMARS = SmarsRobot()
