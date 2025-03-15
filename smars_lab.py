@@ -17,12 +17,15 @@ from flask import Flask, render_template, request, jsonify, flash
 from flask_bootstrap import Bootstrap
 from markupsafe import Markup
 from smars_library.smars_library import SmarsRobot
+from Adafruit-PCA9685 import PCA9685
 
 from utils.command_history import CommandHistory
 
 APP = Flask(__name__)
-SMARS = SmarsRobot()
-DRIVER = sl.DO_NOT_USE_PCA_DRIVER
+robot = SmarsRobot()
+
+# Comment out the line below to run on without the driver loading
+# DRIVER = sl.DO_NOT_USE_PCA_DRIVER
 
 # print(DRIVER)
 COMMAND_HISTORY = CommandHistory()
@@ -49,9 +52,10 @@ def load_config():
 def index():
     """ render the main index template """
     global telemetry
-    telemetry = SMARS.get_telemetry()
+    telemetry = robot.get_telemetry()
     if DRIVER:
-        flash(Markup('PCA9685 Driver not loaded. For more information visit: <a href="https://kevinmcaleer.github.io/SMARSLab/driver_not_found">This documentation page</a>'), 'danger')
+        flash(Markup('PCA9685 Driver not loaded. For more information visit:'
+                     ' <a href="https://kevinmcaleer.github.io/SMARSLab/driver_not_found">This documentation page</a>'), 'danger')
         # flash(Markup('another test of flash'), 'success')
     return render_template("index.html")
 
@@ -69,7 +73,7 @@ def metricsapi():
         metric = request.values.get('metric')
         if metric == "telemetry":
 
-            return jsonify(SMARS.get_telemetry())
+            return jsonify(robot.get_telemetry())
     return "Ok"
     # return SMARS.get_telemetry()
 
@@ -83,16 +87,16 @@ def controlapi():
         # Map commands to corresponding SMARS actions dynamically
 
         command_actions = {
-            "up": lambda: SMARS.walkforward(steps=10),
-            "down": lambda: SMARS.walkbackward(steps=10),
-            "left": lambda: SMARS.turnleft(),
-            "right": lambda: SMARS.turnright(),
-            "stand": lambda: SMARS.stand(),
-            "sit": lambda: SMARS.sit(),
-            "wiggle": lambda: SMARS.wiggle(wiggle_count=1),
-            "clap": lambda: SMARS.clap(clap_count=1),
+            "up": lambda: robot.walkforward(steps=10),
+            "down": lambda: robot.walkbackward(steps=10),
+            "left": lambda: robot.turnleft(),
+            "right": lambda: robot.turnright(),
+            "stand": lambda: robot.stand(),
+            "sit": lambda: robot.sit(),
+            "wiggle": lambda: robot.wiggle(wiggle_count=1),
+            "clap": lambda: robot.clap(clap_count=1),
             "clear_history": lambda: COMMAND_HISTORY.clear(),
-            "home": lambda: SMARS.default(),
+            "home": lambda: robot.default(),
         }
 
         # Handle "command" and "full_history" edge case
