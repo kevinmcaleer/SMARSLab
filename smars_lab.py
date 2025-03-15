@@ -6,7 +6,6 @@ Updated 13 June 2021
 Updated 15 March 2025
 """
 # TODO: add more telemetry - the foot position and ultrasonic distance sensor data
-# TODO: add a smars graphic to the page, depdending on what type is selected.
 
 import os
 from os import path
@@ -61,10 +60,6 @@ def index():
 def about():
     """ returns the about page """
     return render_template("about.html")
-
-@APP.route("/blockly")
-def blockly():
-    return render_template("blockly.html")
 
 @APP.route('/metricsapi', methods=['GET', 'POST'])
 def metricsapi():
@@ -143,7 +138,7 @@ def bluetooth_api():
 
 
 def shutdown_server():
-    """ shutsdown the SMARSLab web server """
+    """ shuts down the SMARSLab web server """
     func = request.environ.get('werkzeug.server.shutdown')
     if func is None:
         raise RuntimeError('Not running with the Werkzeug Server')
@@ -152,7 +147,7 @@ def shutdown_server():
 
 @APP.route('/shutdown')
 def shutdown():
-    """ requests the web server shutsdown """
+    """ requests the web server shuts down """
     shutdown_server()
     return 'Server shutting down... Done.'
 
@@ -167,10 +162,7 @@ def background_process():
         else:
             return jsonify(result="try again")
     except Exception as error:
-        
-#         return(str(error))
-        return jsonify(result="There was an error")
-
+        return jsonify(result=f"There was an error {error}")
 
 @APP.route('/telemetry')
 def get_telemetry():
@@ -182,8 +174,8 @@ def get_telemetry():
 def get_command_history():
     """ returns the command history """
     if request.method == 'POST':
-        listtype = request.values.get('listtype')
-        if listtype == "top10":
+        list_type = request.values.get('list_type')
+        if list_type == "top10":
             return jsonify(COMMAND_HISTORY.get_last_ten())
         else:
             return jsonify(COMMAND_HISTORY.get_history())

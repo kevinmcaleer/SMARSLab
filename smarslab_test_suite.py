@@ -17,7 +17,6 @@ class CreateRobot(unittest.TestCase):
 
     def test_is_robot(self):
         robot = SmarsRobot()
-        is_robot_instance = isinstance(robot, SmarsRobot)  # Clearer naming and separation
         self.assertIsInstance(robot, SmarsRobot, "Failed to create a valid SmarsRobot instance")
 
 
